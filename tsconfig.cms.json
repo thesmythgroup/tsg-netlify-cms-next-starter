@@ -1,0 +1,11 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "isolatedModules": false,
+    "noEmit": false,
+    "jsx": "react",
+    "allowUmdGlobalAccess": true
+  },
+  "include": ["next-env.d.ts", "cms/**/*"],
+  "exclude": ["node_modules"]
+}

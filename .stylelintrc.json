@@ -1,0 +1,13 @@
+{
+  "plugins": ["stylelint-scss"],
+  "rules": {
+    "block-no-empty": true,
+    "color-hex-case": "lower",
+    "number-leading-zero": "always",
+    "declaration-colon-space-after": "always",
+    "declaration-colon-space-before": "never",
+    "declaration-block-semicolon-newline-after": "always",
+    "string-quotes": "single",
+    "scss/selector-no-redundant-nesting-selector": true
+  }
+}

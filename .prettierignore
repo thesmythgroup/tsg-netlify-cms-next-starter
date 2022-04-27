@@ -1,0 +1,6 @@
+# Ignore artifacts:
+build
+.next
+coverage
+out
+_content
