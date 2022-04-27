@@ -9,7 +9,6 @@ backend:
     deleteMedia: 'docs: delete “{{path}}”'
     openAuthoring: 'docs: {{message}}'
 local_backend: true
-publish_mode: editorial_workflow
 media_folder: '/public/uploads'
 public_folder: '/uploads'
 collections:
