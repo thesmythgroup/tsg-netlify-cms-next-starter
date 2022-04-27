@@ -9,7 +9,7 @@ export default class Footer extends Component {
   render(): JSX.Element {
     return (
       <div className={styles.main_footer}>
-        <div>All rights reserved {this.getYear()}</div>
+        <div>&copy; {this.getYear()} All rights reserved</div>
       </div>
     );
   }

@@ -32,6 +32,10 @@ npm run cms
 
 You can log into the CMS at <http://127.0.0.1:8080/admin>.
 
+## Deploy To Netlify
+
+<a href="https://app.netlify.com/start/deploy?repository=https://github.com/thesmythgroup/tsg-netlify-cms-next-starter&amp;stack=cms"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
+
 ## Development Notes
 
 ### Page Components Defined in `./pages` Should Only be "Entry" Components
