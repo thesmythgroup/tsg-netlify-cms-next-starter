@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import styles from './Footer.module.scss';
 
 export default class Footer extends Component {
   getYear(): number {
@@ -7,10 +8,8 @@ export default class Footer extends Component {
 
   render(): JSX.Element {
     return (
-      <div>
-        <div>
-          All rights reserved {this.getYear()}
-        </div>
+      <div className={styles.main_footer}>
+        <div>All rights reserved {this.getYear()}</div>
       </div>
     );
   }

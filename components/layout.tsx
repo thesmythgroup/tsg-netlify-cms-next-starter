@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import Footer from '../components/footer/footer';
-import Header from '../components/nav/header';
+import Header from './header/Header';
+import Footer from './footer/Footer';
 
 export default class Layout extends Component {
-
   render(): JSX.Element {
     const { children } = this.props;
 

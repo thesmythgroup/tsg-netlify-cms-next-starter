@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import styles from './Home.module.scss';
 
 export interface HomeComponentProps {
     title: string;
