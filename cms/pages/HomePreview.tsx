@@ -1,6 +1,6 @@
 import { PreviewTemplateComponentProps } from 'netlify-cms-core';
 import React, { Component } from 'react';
-import Home from '../../components/pages/home';
+import Home from '../../components/pages/Home';
 
 /**
  * This preview component wraps the standard Home component, and connects the netlify CMS

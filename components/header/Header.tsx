@@ -6,6 +6,7 @@ export default class header extends Component {
     return (
       <div className={styles.header}>
         <img
+          className={styles.header_logo}
           src={'assets/images/tsg_icon_large.png'}
           alt={'The Smyth Group logo'}
         />

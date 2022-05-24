@@ -9,7 +9,10 @@ export default class Footer extends Component {
   render(): JSX.Element {
     return (
       <div className={styles.main_footer}>
-        <div>&copy; {this.getYear()} All rights reserved</div>
+        <div>
+          &copy; {this.getYear()} The Jamie Smyth Groups, LLC All rights
+          reserved
+        </div>
       </div>
     );
   }
