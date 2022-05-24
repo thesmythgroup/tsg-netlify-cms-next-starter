@@ -26,7 +26,6 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
-          <script src='/scripts/netlify-cms.js'></script>
         </body>
       </Html>
     );
