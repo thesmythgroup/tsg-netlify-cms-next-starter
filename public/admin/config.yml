@@ -12,12 +12,21 @@ local_backend: true
 media_folder: '/public/uploads'
 public_folder: '/uploads'
 collections:
-  - label: "Pages"
-    name: "pages"
+  - label: 'Pages'
+    name: 'pages'
     files:
-      - label: "Home Page"
-        name: "home"
-        file: "_content/home.md"
+      - label: 'Home Page'
+        name: 'home'
+        file: '_content/home.md'
         fields:
-          - {label: Title, name: title, widget: string}
-          - {label: Intro, name: intro, widget: markdown}
+          - {label: 'Title', name: 'title', widget: 'string'}
+          - {label: 'Intro', name: 'intro', widget: 'markdown'}
+          - label: 'Features'
+            name: 'features'
+            widget: 'list'
+            fields:
+              - {label: 'Title', name: 'title', widget: 'string'}
+              - {label: 'Content', name: 'content', widget: 'markdown', modes: ['rich_text', 'raw']}
+          - label: 'Gallery'
+            name: 'gallery'
+            widget: 'image'

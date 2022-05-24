@@ -13,9 +13,14 @@ export default class HomePreview extends Component<PreviewTemplateComponentProps
 
     const intro = this.props.entry.getIn(['data', 'intro']);
 
+    /**
+     * Example of loading in a collection from the CMS data
+     */
+    const features = this.props.entry.getIn(['data', 'features']).toJS();
+
     return (
       // Send the props down into the component.
-      <Home title={title} intro={intro} />
+      <Home title={title} intro={intro} features={features} />
     );
   }
 }

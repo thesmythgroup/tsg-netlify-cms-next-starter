@@ -1,6 +1,6 @@
-var path = require('path'); // eslint-disable-line @typescript-eslint/no-var-requires
-var webpack = require('webpack'); // eslint-disable-line @typescript-eslint/no-var-requires
-var MiniCssExtractPlugin = require('mini-css-extract-plugin'); // eslint-disable-line @typescript-eslint/no-var-requires
+const path = require('path'); // eslint-disable-line @typescript-eslint/no-var-requires
+const webpack = require('webpack'); // eslint-disable-line @typescript-eslint/no-var-requires
+const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // eslint-disable-line @typescript-eslint/no-var-requires
 
 module.exports = {
   entry: './cms/cms.ts',
@@ -17,6 +17,9 @@ module.exports = {
       path: require.resolve('path-browserify'),
       fs: false,
     },
+  },
+  externals: {
+    tailwindcss: 'tailwindcss',
   },
   module: {
     rules: [

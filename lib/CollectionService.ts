@@ -5,7 +5,7 @@ import matter from 'gray-matter';
  * Markdown Collection
  * */
 export default class CollectionService<T> {
-  _collectionPath: string | undefined;
+  _collectionFilePath: string | undefined;
 
   /**
    * Returns an array of file paths
@@ -26,23 +26,16 @@ export default class CollectionService<T> {
   /**
    * Returns a Markdown collection as an array of objects
    * */
-  getCollection(): T[] {
-    const files = this._getFiles(this._collectionPath);
+  getParsedFiles(): T[] {
+    const files = this._getFiles(this._collectionFilePath);
 
     return files.map((file) => {
       return this._getMetaFields(file);
     });
   }
 
-  /**
-   * Returns the array of file paths
-   * */
-  getFiles(): string[] {
-    return this._getFiles(this._collectionPath);
-  }
-
-  constructor(collectionPath: string) {
-    this._collectionPath = collectionPath;
+  constructor(collectionFilePath: string) {
+    this._collectionFilePath = collectionFilePath;
     return this;
   }
 }
