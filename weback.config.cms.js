@@ -33,11 +33,10 @@ module.exports = {
         },
       },
       {
-        test: /\.(sass|scss|css)$/,
+        test: /\.(sass|css)$/,
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader', // translates CSS into CommonJS
-          'sass-loader', // compiles Sass to CSS, using Node Sass by default
         ],
       },
       {
@@ -58,7 +57,7 @@ module.exports = {
       },
       {
         test: /\.(png|jpg)$/,
-        loader: 'url-loader'
+        loader: 'url-loader',
       },
       {
         test: /\.(ttf|eot|svg|woff|woff2)(\?v=[0-9]\.[0-9]\.[0-9])?$/,

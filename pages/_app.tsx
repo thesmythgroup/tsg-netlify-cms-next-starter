@@ -1,4 +1,4 @@
-import '../styles/index.scss';
+import '../styles/index.css';
 import { AppProps } from 'next/app';
 import Layout from '../components/layout';
 import { useRouter } from 'next/router';

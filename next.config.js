@@ -5,9 +5,6 @@ module.exports = withOptimizedImages({
   inlineImageLimit: -1,
   handleImages: ['jpeg', 'png', 'webp', 'gif'],
   trailingSlash: true,
-  sassOptions: {
-    includePaths: [path.join(__dirname, 'styles')],
-  },
   webpack: (cfg) => {
     cfg.module.rules.push({
       test: /\.md$/,

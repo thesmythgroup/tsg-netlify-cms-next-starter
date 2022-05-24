@@ -7,7 +7,7 @@ export default class Layout extends Component {
     const { children } = this.props;
 
     return (
-      <div className={'container'}>
+      <div className='container mx-auto px-2'>
         <Header />
         <main>{children}</main>
         <Footer />
