@@ -56,6 +56,16 @@ For each new page we create, we then need to reference it in two places:
 1. Admin entry point in `public/admin/index.html` (see: <https://www.netlifycms.org/docs/customization/>)
 2. Front-end entry-point in `pages/page-name.tsx`
 
+### Don't Use next/image
+
+Because the primary use case for using Next.js is to bundle a static site using `next export`, the default
+behavior of the `next/image` component imposes too many restrictions and problems. Therefore, this project uses
+(`next-image-optimized`)[https://github.com/cyrilwanner/next-optimized-images] instead.
+
+Simply use `<img src={'path/to/image'}` where images are needed.
+
+Examples:
+
 ### Developing On the Local CMS
 
 The CMS is configured in `public/admin/config.yml`. If you make changes to the config
