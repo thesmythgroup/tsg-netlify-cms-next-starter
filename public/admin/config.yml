@@ -19,18 +19,23 @@ collections:
         name: 'home'
         file: 'content/home.md'
         fields:
-          - {label: 'Title', name: 'title', widget: 'string'}
-          - {label: 'Intro', name: 'intro', widget: 'markdown'}
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Intro', name: 'intro', widget: 'markdown' }
           - label: 'Features'
             name: 'features'
             widget: 'list'
             fields:
-              - {label: 'Title', name: 'title', widget: 'string'}
-              - {label: 'Content', name: 'content', widget: 'markdown', modes: ['rich_text', 'raw']}
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - {
+                  label: 'Content',
+                  name: 'content',
+                  widget: 'markdown',
+                  modes: ['rich_text', 'raw'],
+                }
           - label: 'Gallery Images'
             name: 'gallery'
             widget: 'list'
             label_singular: 'Image'
             add_to_top: true
             fields:
-              - {label: 'Image', name: 'image', widget: 'image'}
+              - { label: 'Image', name: 'image', widget: 'image' }

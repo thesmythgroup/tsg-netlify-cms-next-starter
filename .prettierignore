@@ -1,6 +1,8 @@
 # Ignore artifacts:
 build
 .next
+.vscode
+.idea
 coverage
 out
-_content
+content
