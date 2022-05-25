@@ -20,7 +20,7 @@ export default class HomePage extends Component<HomeComponentProps> {
 
 export function getStaticProps() {
   const markdownCollection = new CollectionService<HomeComponentProps>(
-    './_content/home.md',
+    './content/home.md',
   );
 
   const resolvedFiles = markdownCollection.getParsedFiles();

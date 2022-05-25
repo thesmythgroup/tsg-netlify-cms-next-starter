@@ -17,7 +17,7 @@ collections:
     files:
       - label: 'Home Page'
         name: 'home'
-        file: '_content/home.md'
+        file: 'content/home.md'
         fields:
           - {label: 'Title', name: 'title', widget: 'string'}
           - {label: 'Intro', name: 'intro', widget: 'markdown'}

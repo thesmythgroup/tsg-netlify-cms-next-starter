@@ -6,6 +6,6 @@
     "jsx": "react",
     "allowUmdGlobalAccess": true
   },
-  "include": ["next-env.d.ts", "cms/**/*"],
+  "include": ["cms/**/*"],
   "exclude": ["node_modules"]
 }
