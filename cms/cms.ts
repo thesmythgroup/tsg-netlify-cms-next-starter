@@ -1,6 +1,5 @@
 import CMS from 'netlify-cms-app';
-import '../styles/index.css';
-import HomePreview from './pages/HomePreview';
+import IndexPreviewComponent from './previews/IndexPreviewComponent';
 
 CMS.init();
 
@@ -15,4 +14,4 @@ CMS.registerPreviewStyle(
 CMS.registerPreviewStyle(
   'https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css',
 );
-CMS.registerPreviewTemplate('home', HomePreview);
+CMS.registerPreviewTemplate('home', IndexPreviewComponent);

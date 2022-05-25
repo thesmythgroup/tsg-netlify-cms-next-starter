@@ -1,23 +1,23 @@
 import { Component } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-export interface HomeFeature {
+export interface IndexFeature {
   title: string;
   content: string;
 }
 
-export interface HomeGalleryImage {
+export interface IndexGalleryImage {
   image: string;
 }
 
-export interface HomeComponentProps {
+export interface IndexComponentProps {
   title: string;
   intro: string;
-  features: HomeFeature[];
-  gallery: HomeGalleryImage[];
+  features: IndexFeature[];
+  gallery: IndexGalleryImage[];
 }
 
-export default class Home extends Component<HomeComponentProps> {
+export default class IndexPageComponent extends Component<IndexComponentProps> {
   render(): JSX.Element {
     return (
       <div>

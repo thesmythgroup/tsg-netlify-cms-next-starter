@@ -1,13 +1,13 @@
 import { PreviewTemplateComponentProps } from 'netlify-cms-core';
 import React, { Component } from 'react';
-import Home from '../../components/pages/Home';
+import IndexComponent from '../../components/page/IndexComponent';
 
 /**
  * This preview component wraps the standard Home component, and connects the netlify CMS
  * backend data to the component props.
  * See: https://www.netlifycms.org/docs/customization/
  */
-export default class HomePreview extends Component<PreviewTemplateComponentProps> {
+export default class IndexPreviewComponent extends Component<PreviewTemplateComponentProps> {
   render(): JSX.Element {
     const title = this.props.entry.getIn(['data', 'title']);
 
@@ -23,7 +23,7 @@ export default class HomePreview extends Component<PreviewTemplateComponentProps
     return (
       // Send the props down into the component.
       <div className={'p-5'}>
-        <Home
+        <IndexComponent
           title={title}
           intro={intro}
           features={features}

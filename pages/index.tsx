@@ -1,13 +1,15 @@
 import { Component } from 'react';
-import Home, { HomeComponentProps } from '../components/pages/Home';
+import IndexComponent, {
+  IndexComponentProps,
+} from '../components/page/IndexComponent';
 import CollectionService from '../lib/CollectionService';
 
-export default class HomePage extends Component<HomeComponentProps> {
+export default class IndexPageView extends Component<IndexComponentProps> {
   render(): JSX.Element {
     const { title, intro, features, gallery } = this.props;
     return (
       <div>
-        <Home
+        <IndexComponent
           title={title}
           intro={intro}
           features={features}
@@ -19,7 +21,7 @@ export default class HomePage extends Component<HomeComponentProps> {
 }
 
 export function getStaticProps() {
-  const markdownCollection = new CollectionService<HomeComponentProps>(
+  const markdownCollection = new CollectionService<IndexComponentProps>(
     './content/home.md',
   );
 
