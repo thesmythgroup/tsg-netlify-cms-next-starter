@@ -4,10 +4,15 @@ import CollectionService from '../lib/CollectionService';
 
 export default class HomePage extends Component<HomeComponentProps> {
   render(): JSX.Element {
-    const { title, intro, features } = this.props;
+    const { title, intro, features, gallery } = this.props;
     return (
       <div>
-        <Home title={title} intro={intro} features={features} />
+        <Home
+          title={title}
+          intro={intro}
+          features={features}
+          gallery={gallery}
+        />
       </div>
     );
   }
@@ -27,6 +32,7 @@ export function getStaticProps() {
       title: metadataFromFile.title,
       intro: metadataFromFile.intro,
       features: metadataFromFile.features,
+      gallery: metadataFromFile.gallery,
     },
   };
 }

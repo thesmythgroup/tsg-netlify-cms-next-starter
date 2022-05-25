@@ -18,9 +18,18 @@ export default class HomePreview extends Component<PreviewTemplateComponentProps
      */
     const features = this.props.entry.getIn(['data', 'features']).toJS();
 
+    const gallery = this.props.entry.getIn(['data', 'gallery']).toJS();
+
     return (
       // Send the props down into the component.
-      <Home title={title} intro={intro} features={features} />
+      <div className={'p-5'}>
+        <Home
+          title={title}
+          intro={intro}
+          features={features}
+          gallery={gallery}
+        />
+      </div>
     );
   }
 }

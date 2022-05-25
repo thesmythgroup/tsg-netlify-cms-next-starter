@@ -6,10 +6,15 @@ export interface HomeFeature {
   content: string;
 }
 
+export interface HomeGalleryImage {
+  image: string;
+}
+
 export interface HomeComponentProps {
   title: string;
   intro: string;
   features: HomeFeature[];
+  gallery: HomeGalleryImage[];
 }
 
 export default class Home extends Component<HomeComponentProps> {
@@ -26,6 +31,25 @@ export default class Home extends Component<HomeComponentProps> {
                 <div>
                   <ReactMarkdown children={feature.content} />
                 </div>
+              </div>
+            );
+          })}
+        </div>
+        <div>
+          <h2 className={'text-2xl mb-8'}>Arrange Content To Your Liking</h2>
+          <p className={'mb-8'}>
+            Provide rich experiences and accurate information.
+          </p>
+        </div>
+        <div className={'grid grid-cols-3'}>
+          {this.props.gallery.map((item, i) => {
+            return (
+              <div key={i} className={'relative overflow-hidden'}>
+                <img
+                  className={'scale-150 h-full w-fit'}
+                  src={item.image}
+                  alt={'In production this should have real alt text'}
+                />
               </div>
             );
           })}

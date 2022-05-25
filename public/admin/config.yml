@@ -27,6 +27,10 @@ collections:
             fields:
               - {label: 'Title', name: 'title', widget: 'string'}
               - {label: 'Content', name: 'content', widget: 'markdown', modes: ['rich_text', 'raw']}
-          - label: 'Gallery'
+          - label: 'Gallery Images'
             name: 'gallery'
-            widget: 'image'
+            widget: 'list'
+            label_singular: 'Image'
+            add_to_top: true
+            fields:
+              - {label: 'Image', name: 'image', widget: 'image'}
