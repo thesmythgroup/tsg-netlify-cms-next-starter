@@ -1,12 +1,11 @@
 import { writeFile } from 'node:fs/promises';
 import path from 'path';
+import { SITE_URL } from '../lib/constants';
 
 (async () => {
-  // TODO: Once we know the site url, update this.
-  const siteUrl = 'https://www.example.com';
   const fileContents = [
     'User-agent: *',
-    `Sitemap: ${siteUrl}/sitemap.xml`,
+    `Sitemap: ${SITE_URL}/sitemap.xml`,
   ].join('\n');
 
   try {

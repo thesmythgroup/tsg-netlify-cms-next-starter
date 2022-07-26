@@ -1,10 +1,9 @@
 import { readdirSync } from 'fs';
 import { writeFile } from 'node:fs/promises';
 import path from 'path';
+import { SITE_URL } from '../lib/constants';
 
 (async () => {
-  // TODO: Once we know the site url, update this.
-  const siteUrl = 'https://www.example.com';
   const staticPageUrls = readdirSync('./public')
     .filter((staticPage) => {
       // disallowlist of items in site root
@@ -21,7 +20,7 @@ import path from 'path';
       ].includes(staticPage);
     })
     .map((staticPagePath) => {
-      return `${siteUrl}/${staticPagePath}`;
+      return `${SITE_URL}/${staticPagePath}`;
     });
 
   const siteMap = `<?xml version="1.0" encoding="UTF-8"?>
@@ -45,7 +44,7 @@ import path from 'path';
       siteMap,
       { encoding: 'utf-8' },
     );
-    console.log(`Completed sitemap generation for: ${siteUrl}`);
+    console.log(`Completed sitemap generation for: ${SITE_URL}`);
   } catch (e) {
     console.error(e);
   }
