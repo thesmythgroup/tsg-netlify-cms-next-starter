@@ -36,6 +36,12 @@ You can log into the CMS at <http://127.0.0.1:8080/admin>.
 
 <a href="https://app.netlify.com/start/deploy?repository=https://github.com/thesmythgroup/tsg-netlify-cms-next-starter&amp;stack=cms"><img src="https://www.netlify.com/img/deploy/button.svg" alt="Deploy to Netlify"></a>
 
+## Before Releasing To Production
+
+Before you can go live with this site, you will need to do the following items:
+
+   - Change `SITE_URL` in `lib\constants.ts` to the URL of your site.
+
 ## Development Notes
 
 ### Page Components Defined in `./pages` Should Only be "Entry" Components
