@@ -62,6 +62,30 @@ For each new page we create, we then need to reference it in two places:
 1. Admin entry point in `public/admin/index.html` (see: <https://www.netlifycms.org/docs/customization/>)
 2. Front-end entry-point in `pages/page-name.tsx`
 
+### TailwindCSS (aka: Don't Use CSS...generally)
+
+These applications are intended to be styled using (tailwindcss)[https://tailwindcss.com/]
+
+There may be some situations where a singular CSS file is more practical. Whether to
+use a separate CSS file should be decided case-by-case.
+
+Generally speaking, Tailwindcss should be used for styling elements.
+
+### TailwindCSS Plug-ins
+TailwindCSS offers official plugins for added ease & functionality. We have included some of the more useful plugins already:
+
+* [@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms)
+  * A plugin that provides a basic reset for form styles that makes form elements easy to override with utilities.
+* [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)
+  * This plugin provides a set of `prose` classes you can use to add beautiful typographic defaults to any vanilla HTML you don’t control, like HTML rendered from Markdown, or pulled from a CMS.
+
+**Not included** but also useful:
+* [@tailwindcss/aspect-ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
+  * A plugin that provides a composable API for giving elements a fixed aspect ratio.
+* [@tailwindcss/line-clamp](https://github.com/tailwindlabs/tailwindcss-line-clamp)
+  * A plugin that provides utilities for visually truncating text after a fixed number of lines.
+
+
 ### Don't Use next/image
 
 Because the primary use case for using Next.js is to bundle a static site using `next export`, the default
