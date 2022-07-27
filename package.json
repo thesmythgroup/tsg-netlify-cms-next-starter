@@ -14,8 +14,10 @@
     "lint": "prettier --check . && npm run commitlint"
   },
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/material": "^5.9.2",
     "@svgr/webpack": "^5.5.0",
     "css-loader": "^5.2.4",
     "file-loader": "^6.2.0",
