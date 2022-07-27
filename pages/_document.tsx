@@ -21,7 +21,10 @@ class MyDocument extends Document {
         <Head>
           {/*do not include a title tag here since _document is only rendered on the initial pre-render*/}
           {/*see: https://nextjs.org/docs/messages/no-document-title*/}
-          <script src='https://identity.netlify.com/v1/netlify-identity-widget.js'></script>
+          <script
+            src='https://identity.netlify.com/v1/netlify-identity-widget.js'
+            defer
+          ></script>
         </Head>
         <body>
           <Main />

@@ -1,7 +1,7 @@
 const path = require('path'); // eslint-disable-line @typescript-eslint/no-var-requires
 const withOptimizedImages = require('next-optimized-images'); // eslint-disable-line @typescript-eslint/no-var-requires
 
-module.exports = withOptimizedImages({
+const config = withOptimizedImages({
   inlineImageLimit: -1,
   handleImages: ['jpeg', 'png', 'webp', 'gif'],
   trailingSlash: true,
@@ -18,3 +18,18 @@ module.exports = withOptimizedImages({
     return cfg;
   },
 });
+
+/** @type {import('next').NextConfig} */
+const finalConfig = {};
+
+// As of Next 12.2.3, the next.config.js file is validated and checked for "invalid" fields.
+// Many Next plugins incorrectly add extra fields. So, the official workaround for now is to
+// remove the extra fields from the next.config.js file before exporting the config.
+// https://github.com/vercel/next.js/pull/38498#issuecomment-1197282975
+Object.keys(config).forEach((key) => {
+  if (key !== 'inlineImageLimit' && key !== 'handleImages') {
+    finalConfig[key] = config[key];
+  }
+});
+
+module.exports = finalConfig;
