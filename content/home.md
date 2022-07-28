@@ -1,5 +1,5 @@
 ---
-title: TSG Netlify CMS Starter
+title: TSG Netlify CMS Starter! Hey Im changin this!
 intro: Netlify CMS is a great option for allowing non-technical editing of web
   content.
 features:
@@ -13,12 +13,12 @@ features:
     content: Netlify CMS is easy to develop with, and simple to maintain, meaning
       more time to build bells and whistles!
 gallery:
-  - image: /uploads/cleanshot-2022-05-24-at-17.13.20-2x.png
   - image: /uploads/cleanshot-2022-05-24-at-17.13.32-2x.png
-  - image: /uploads/cleanshot-2022-05-24-at-17.13.41-2x.png
+  - image: /uploads/cleanshot-2022-05-24-at-17.13.20-2x.png
   - image: /uploads/cleanshot-2022-05-24-at-17.14.03-2x.png
-  - image: /uploads/cleanshot-2022-05-24-at-17.14.31-2x.png
+  - image: /uploads/cleanshot-2022-05-24-at-17.13.41-2x.png
   - image: /uploads/cleanshot-2022-05-24-at-17.14.42-2x.png
+  - image: /uploads/cleanshot-2022-05-24-at-17.14.31-2x.png
   - image: /uploads/cleanshot-2022-05-24-at-17.14.51-2x.png
   - image: /uploads/cleanshot-2022-05-24-at-17.15.01-2x.png
 ---
