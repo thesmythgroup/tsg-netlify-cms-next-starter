@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next export && npm run build:cms",
+    "tailwind": "tailwindcss -i ./styles/index.css -o ./out/admin/assets/cms.css",
     "cms": "npm run build && concurrently \"netlify-cms-proxy-server\" \"http-server -c-1 ./out\" \"npm run build:cms -- --watch\"",
-    "build:cms": "webpack --config weback.config.cms.js",
+    "build:cms": "npm run tailwind && webpack --config weback.config.cms.js",
     "build:robots-file": "TS_NODE_PROJECT=tsconfig.scripts.json ./node_modules/.bin/node-dev scripts/generate-robots-file.ts",
     "build:sitemap": "TS_NODE_PROJECT=tsconfig.scripts.json ./node_modules/.bin/node-dev scripts/generate-sitemap.ts",
     "start": "next start",

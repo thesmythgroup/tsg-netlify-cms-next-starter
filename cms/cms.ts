@@ -1,17 +1,11 @@
 import CMS from 'netlify-cms-app';
 import IndexPreviewComponent from './previews/IndexPreviewComponent';
+import { cmsConfig } from './config';
 
-CMS.init();
+(window as unknown as { CMS_MANUAL_INIT: boolean }).CMS_MANUAL_INIT = true;
+
+CMS.init({ config: cmsConfig });
 
 // Initialize stuff here.
-CMS.registerPreviewStyle('/admin/assets/main.css');
-CMS.registerPreviewStyle(
-  'https://cdn.jsdelivr.net/npm/tailwindcss/dist/preflight.min.css',
-);
-CMS.registerPreviewStyle(
-  'https://cdn.jsdelivr.net/npm/tailwindcss/dist/utilities.min.css',
-);
-CMS.registerPreviewStyle(
-  'https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css',
-);
+CMS.registerPreviewStyle('/admin/assets/cms.css');
 CMS.registerPreviewTemplate('home', IndexPreviewComponent);
