@@ -40,7 +40,7 @@ You can log into the CMS at <http://127.0.0.1:8080/admin>.
 
 Before you can go live with this site, you will need to do the following items:
 
-   - Change `SITE_URL` in `lib\constants.ts` to the URL of your site.
+- Change `SITE_URL` in `lib\constants.ts` to the URL of your site.
 
 ## Development Notes
 
@@ -72,19 +72,20 @@ use a separate CSS file should be decided case-by-case.
 Generally speaking, Tailwindcss should be used for styling elements.
 
 ### TailwindCSS Plug-ins
+
 TailwindCSS offers official plugins for added ease & functionality. We have included some of the more useful plugins already:
 
-* [@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms)
-  * A plugin that provides a basic reset for form styles that makes form elements easy to override with utilities.
-* [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)
-  * This plugin provides a set of `prose` classes you can use to add beautiful typographic defaults to any vanilla HTML you don’t control, like HTML rendered from Markdown, or pulled from a CMS.
+- [@tailwindcss/forms](https://github.com/tailwindlabs/tailwindcss-forms)
+  - A plugin that provides a basic reset for form styles that makes form elements easy to override with utilities.
+- [@tailwindcss/typography](https://tailwindcss.com/docs/typography-plugin)
+  - This plugin provides a set of `prose` classes you can use to add beautiful typographic defaults to any vanilla HTML you don’t control, like HTML rendered from Markdown, or pulled from a CMS.
 
 **Not included** but also useful:
-* [@tailwindcss/aspect-ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
-  * A plugin that provides a composable API for giving elements a fixed aspect ratio.
-* [@tailwindcss/line-clamp](https://github.com/tailwindlabs/tailwindcss-line-clamp)
-  * A plugin that provides utilities for visually truncating text after a fixed number of lines.
 
+- [@tailwindcss/aspect-ratio](https://github.com/tailwindlabs/tailwindcss-aspect-ratio)
+  - A plugin that provides a composable API for giving elements a fixed aspect ratio.
+- [@tailwindcss/line-clamp](https://github.com/tailwindlabs/tailwindcss-line-clamp)
+  - A plugin that provides utilities for visually truncating text after a fixed number of lines.
 
 ### Don't Use next/image
 
