@@ -60,6 +60,18 @@ export const cmsConfig: CmsConfig = {
             },
           ],
         },
+        {
+          label: 'About',
+          name: 'about',
+          file: 'content/about.md',
+          fields: [
+            {
+              label: 'Content',
+              name: 'content',
+              widget: 'string',
+            },
+          ],
+        },
       ],
     },
   ],
