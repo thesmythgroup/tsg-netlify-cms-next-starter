@@ -4,7 +4,6 @@ about: General feature work and tasks
 title: ''
 labels: ''
 assignees: ''
-
 ---
 
 ## To be solved

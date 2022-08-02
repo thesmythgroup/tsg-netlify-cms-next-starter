@@ -1,6 +1,41 @@
-import { CmsConfig } from 'netlify-cms-core';
+import {
+  CmsCollection,
+  CmsCollectionFile,
+  CmsConfig,
+  CmsField,
+  CmsFieldBase,
+} from 'netlify-cms-core';
 
-export const cmsConfig: CmsConfig = {
+/**
+ * This is a helper/utility type that allows us to override a single
+ * property of a type.
+ */
+type Modify<T, R> = Omit<T, keyof R> & R;
+
+interface CustomCmsFieldTypes extends CmsFieldBase {
+  widget: 'embeddedVideo';
+  default?: string;
+}
+
+// In order to add support for custom widgets, we need to go down the chain
+// of types and add our custom widget to the union of possible widgets.
+type CustomCmsField = CmsField | (CmsFieldBase & CustomCmsFieldTypes);
+type CustomCmsCollectionFiles = Modify<
+  CmsCollectionFile,
+  {
+    fields: CustomCmsField[];
+  }
+>;
+type CustomCmsCollection = Modify<
+  CmsCollection,
+  { files: CustomCmsCollectionFiles[] }
+>;
+type CustomCmsConfig = Modify<
+  CmsConfig,
+  { collections: CustomCmsCollection[] }
+>;
+
+export const cmsConfig: CustomCmsConfig = {
   backend: {
     name: 'git-gateway',
     branch: 'main',
@@ -35,6 +70,16 @@ export const cmsConfig: CmsConfig = {
               label: 'Intro',
               name: 'intro',
               widget: 'markdown',
+            },
+            {
+              label: 'Show Gallery?',
+              name: 'showGallery',
+              widget: 'boolean',
+            },
+            {
+              label: 'Video',
+              name: 'embeddedVideo',
+              widget: 'embeddedVideo',
             },
             {
               label: 'Features',
@@ -81,6 +126,18 @@ export const cmsConfig: CmsConfig = {
               label: 'Intro',
               name: 'intro',
               widget: 'string',
+            },
+          ],
+        },
+        {
+          label: 'Embedded Video Example',
+          name: 'embedded-video-example',
+          file: 'content/embedded-video-example.md',
+          fields: [
+            {
+              label: 'Video',
+              name: 'embeddedVideo',
+              widget: 'embeddedVideo',
             },
           ],
         },

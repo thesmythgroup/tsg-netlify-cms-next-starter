@@ -1,4 +1,5 @@
 import ReactMarkdown from 'react-markdown';
+import { Component as EmbeddedVideoComponent } from '../../cms/widgets/EmbeddedVideo';
 
 export interface IndexFeature {
   title: string;
@@ -13,6 +14,8 @@ export interface IndexComponentProps {
   title: string;
   intro: string;
   features: IndexFeature[];
+  embeddedVideo: string;
+  showGallery: boolean;
   gallery: IndexGalleryImage[];
 }
 
@@ -20,6 +23,8 @@ const IndexPageComponent: React.FC<IndexComponentProps> = ({
   title,
   intro,
   features,
+  embeddedVideo,
+  showGallery,
   gallery,
 }) => {
   return (
@@ -44,19 +49,26 @@ const IndexPageComponent: React.FC<IndexComponentProps> = ({
           Provide rich experiences and accurate information.
         </p>
       </div>
-      <div className={'grid grid-cols-3'}>
-        {gallery.map((item, i) => {
-          return (
-            <div key={i} className={'relative overflow-hidden'}>
-              <img
-                className={'scale-150 h-full w-fit'}
-                src={item.image}
-                alt={'In production this should have real alt text'}
-              />
-            </div>
-          );
-        })}
+
+      <div className='mb-5'>
+        <EmbeddedVideoComponent url={embeddedVideo} />
       </div>
+
+      {showGallery ? (
+        <div className={'grid grid-cols-3'}>
+          {gallery.map((item, i) => {
+            return (
+              <div key={i} className={'relative overflow-hidden'}>
+                <img
+                  className={'scale-150 h-full w-fit'}
+                  src={item.image}
+                  alt={'In production this should have real alt text'}
+                />
+              </div>
+            );
+          })}
+        </div>
+      ) : null}
     </div>
   );
 };
