@@ -72,6 +72,18 @@ export const cmsConfig: CmsConfig = {
             },
           ],
         },
+        {
+          label: 'Contact',
+          name: 'contact',
+          file: 'content/contact.md',
+          fields: [
+            {
+              label: 'Intro',
+              name: 'intro',
+              widget: 'string',
+            },
+          ],
+        },
       ],
     },
   ],
