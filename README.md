@@ -98,7 +98,7 @@ Examples:
 
 ### Developing On the Local CMS
 
-The CMS is configured in `public/admin/config.yml`. If you make changes to the config
+The CMS is configured in `cms/config/index.ts`. If you make changes to the config
 you may have to hard-reload your browser to get the changes to show up.
 
 ## Learn More

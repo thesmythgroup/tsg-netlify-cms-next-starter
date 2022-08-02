@@ -2,6 +2,8 @@
 title: TSG Netlify CMS Starter! Hey Im changin this!
 intro: Netlify CMS is a great option for allowing non-technical editing of web
   content.
+showGallery: true
+embeddedVideo: https://www.youtube.com/embed/SCCffOscgoc 
 features:
   - title: Easy to edit
     content: Users can log into a user-friendly back end, upload pictures, modify
