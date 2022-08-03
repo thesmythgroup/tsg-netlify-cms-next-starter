@@ -1,4 +1,4 @@
-import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
+import { GetStaticPropsResult } from 'next';
 
 import ContactPageComponent, {
   ContactPageComponentProps,
@@ -10,9 +10,7 @@ export const AboutPage: React.FC<ContactPageComponentProps> = (props) => {
 
 export default AboutPage;
 
-export function getStaticProps({
-  params,
-}: GetStaticPropsContext): GetStaticPropsResult<ContactPageComponentProps> {
+export function getStaticProps(): GetStaticPropsResult<ContactPageComponentProps> {
   const contactPageMarkdown = new CollectionService<ContactPageComponentProps>(
     './content/contact.md',
   );

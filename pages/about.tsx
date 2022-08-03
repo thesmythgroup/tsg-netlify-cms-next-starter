@@ -1,4 +1,4 @@
-import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
+import { GetStaticPropsResult } from 'next';
 import AboutPageComponent, {
   AboutPageComponentProps,
 } from '../components/page/AboutPageComponent';
@@ -9,9 +9,7 @@ export const AboutPage: React.FC<AboutPageComponentProps> = (props) => {
 
 export default AboutPage;
 
-export function getStaticProps({
-  params,
-}: GetStaticPropsContext): GetStaticPropsResult<AboutPageComponentProps> {
+export function getStaticProps(): GetStaticPropsResult<AboutPageComponentProps> {
   const aboutContentMarkdown = new CollectionService<AboutPageComponentProps>(
     './content/about.md',
   );
