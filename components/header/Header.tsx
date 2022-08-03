@@ -33,6 +33,9 @@ const HeaderComponent: React.FC = () => {
         <a href='/contact' className='px-3'>
           Contact
         </a>
+        <a href='/widgets' className='px-3'>
+          Widgets
+        </a>
       </div>
 
       {/* Mobile Menu Open/Close Button **/}
@@ -77,6 +80,9 @@ const HeaderComponent: React.FC = () => {
           </a>
           <a href='/contact' className={'px-12 py-5 text-black'} key='Contact'>
             Contact
+          </a>
+          <a href='/widgets' className={'px-12 py-5 text-black'} key='Contact'>
+            Widgets
           </a>
         </div>
       </div>
