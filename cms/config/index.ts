@@ -5,7 +5,7 @@ import {
   CmsField,
   CmsFieldBase,
 } from 'netlify-cms-core';
-import { WidgetShowcasePage } from './widgetShowcasePage';
+import { widgetShowcasePage } from './widget-showcase-page';
 
 /**
  * This is a helper/utility type that allows us to override a single
@@ -144,7 +144,7 @@ export const cmsConfig: CustomCmsConfig = {
         },
 
         // Example page to showcase all widgets.
-        WidgetShowcasePage,
+        widgetShowcasePage,
       ],
     },
   ],

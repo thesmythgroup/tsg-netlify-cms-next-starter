@@ -2,7 +2,7 @@ import { CmsCollectionFile } from 'netlify-cms-core';
 
 // This page serves to highlight the various widgets that are available as part of Netlify CMS.
 // Documentation can be found here: https://www.netlifycms.org/docs/widgets/
-export const WidgetShowcasePage: CmsCollectionFile = {
+export const widgetShowcasePage: CmsCollectionFile = {
   label: 'Widget Showcase',
   name: 'widgetShowcasePage',
   file: 'content/widgetShowcase.md',
