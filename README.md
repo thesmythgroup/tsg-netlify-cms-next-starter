@@ -50,7 +50,7 @@ Why? Netlify CMS does not have any nice preview styles out-of-the-box, so if
 we're going to display nice previews, we need to pass it our React components.
 
 This being the case, any component defined in `./pages` should serve
-only these two purpose:
+only these purposes:
 
 1. Import content from markdown files
 2. Import a component for display
@@ -61,6 +61,25 @@ For each new page we create, we then need to reference it in two places:
 
 1. Admin entry point in `public/admin/index.html` (see: <https://www.netlifycms.org/docs/customization/>)
 2. Front-end entry-point in `pages/page-name.tsx`
+
+### Our Approach to Page Component Architecture
+
+Most of our pages will need to be customizable via the Netlify CMS editor. The preview shown in the CMS
+Editor should look exactly as it will look in production (static site page).
+This means that the Page components need to accept its data from either A) a markdown file or
+B) the CMS Editor (in the /Admin page).
+
+So each page component should be written in a way that will receive its data as props; resolving at the
+highest level possible and passed down into lower-level components.
+
+```mermaid
+flowchart TD
+    A[Load Page] --> B{Is Admin CMS Editor?}
+    B -->|Yes| C[Get Data From CMS Editor & Pass as props]
+    B ---->|No| D[Get Data From Markdown File & Pass as props]
+    C --> E[Render Page with Prop Data]
+    D --> E[Render Page with Prop Data]
+```
 
 ### TailwindCSS (aka: Don't Use CSS...generally)
 
