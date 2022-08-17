@@ -140,5 +140,28 @@ export const widgetShowcasePage: CmsCollectionFile = {
       name: 'code',
       widget: 'code',
     },
+
+    // Referencing a file collection list field example
+    {
+      label: 'Promoted Feature',
+      name: 'promotedFeature',
+      widget: 'relation',
+      collection: 'pages',
+      file: 'home',
+      search_fields: ['features.*.title'],
+      value_field: 'features.*.title',
+      display_fields: ['features.*.title'],
+    },
+
+    // Referencing a folder collection field example
+    {
+      label: 'Featured Location',
+      name: 'featuredLocation',
+      widget: 'relation',
+      collection: 'sales-offices',
+      search_fields: ['address'],
+      value_field: 'address',
+      display_fields: ['{{title}} ({{address}})'],
+    },
   ],
 };

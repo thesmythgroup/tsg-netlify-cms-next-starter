@@ -29,7 +29,7 @@ type CustomCmsCollectionFiles = Modify<
 >;
 type CustomCmsCollection = Modify<
   CmsCollection,
-  { files: CustomCmsCollectionFiles[] }
+  { files?: CustomCmsCollectionFiles[] }
 >;
 type CustomCmsConfig = Modify<
   CmsConfig,
@@ -145,6 +145,27 @@ export const cmsConfig: CustomCmsConfig = {
 
         // Example page to showcase all widgets.
         widgetShowcasePage,
+      ],
+    },
+    // This collection is used to show off the "relation" widget in the
+    // WidgetShowcasePage.
+    {
+      label: 'Sales Offices',
+      name: 'sales-offices',
+      folder: 'content/sales-offices',
+      create: true,
+      fields: [
+        {
+          label: 'Name',
+          name: 'title',
+          widget: 'string',
+        },
+        {
+          label: 'Address',
+          name: 'address',
+          widget: 'string',
+        },
+        { label: 'Description', name: 'description', widget: 'markdown' },
       ],
     },
   ],
