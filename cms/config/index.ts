@@ -177,14 +177,14 @@ export const cmsConfig: CustomCmsConfig = {
           widget: 'boolean',
         },
         { label: 'Title', name: 'title', widget: 'string' },
+        { label: 'Date', name: 'date', widget: 'datetime' },
+        { label: 'Image', name: 'image', widget: 'image' },
         {
           label: 'Content',
           name: 'content',
           widget: 'markdown',
           modes: ['rich_text', 'raw'],
         },
-        { label: 'Image', name: 'image', widget: 'image' },
-        { label: 'Date', name: 'date', widget: 'datetime' },
       ],
     },
     // This collection is used to show off the "relation" widget in the

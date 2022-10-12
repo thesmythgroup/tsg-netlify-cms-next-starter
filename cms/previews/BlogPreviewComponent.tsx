@@ -7,11 +7,10 @@ const BlogPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
 ) => {
   const title = props.entry.getIn(['data', 'title']);
   const subtitle = props.entry.getIn(['data', 'subtitle']);
-  const posts = props.entry.getIn(['data', 'posts'])?.toJS();
 
   return (
     <div className={'p-5'}>
-      <BlogPageComponent title={title} subtitle={subtitle} posts={posts} />
+      <BlogPageComponent title={title} subtitle={subtitle} posts={[]} />
     </div>
   );
 };
