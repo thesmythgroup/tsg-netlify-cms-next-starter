@@ -7,6 +7,7 @@ import AboutPreviewComponent from './previews/AboutPreviewComponent';
 import ContactPreviewComponent from './previews/ContactPreviewComponent';
 import WidgetShowcasePreviewComponent from './previews/WidgetShowcasePreviewComponent';
 import BlogPreviewComponent from './previews/BlogPreviewComponent';
+import BlogPostPreviewComponent from './previews/BlogPostPreviewComponent';
 
 (window as unknown as { CMS_MANUAL_INIT: boolean }).CMS_MANUAL_INIT = true;
 
@@ -20,6 +21,7 @@ CMS.registerPreviewTemplate(
   'widgetShowcasePage',
   WidgetShowcasePreviewComponent,
 );
+CMS.registerPreviewTemplate('blogPosts', BlogPostPreviewComponent);
 
 initEmbeddedVideoWidget(CMS);
 

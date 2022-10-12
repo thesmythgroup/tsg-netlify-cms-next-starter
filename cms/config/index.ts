@@ -109,7 +109,7 @@ export const cmsConfig: CustomCmsConfig = {
         {
           label: 'Blog',
           name: 'blog',
-          file: 'content/blog.md',
+          file: 'content/blogHeading.md',
           fields: [
             {
               label: 'Title',
@@ -120,24 +120,6 @@ export const cmsConfig: CustomCmsConfig = {
               label: 'Subtitle',
               name: 'subtitle',
               widget: 'string',
-            },
-            {
-              label: 'Posts',
-              name: 'posts',
-              widget: 'list',
-              label_singular: 'Post',
-              add_to_top: true,
-              fields: [
-                { label: 'Title', name: 'title', widget: 'string' },
-                {
-                  label: 'Content',
-                  name: 'content',
-                  widget: 'markdown',
-                  modes: ['rich_text', 'raw'],
-                },
-                { label: 'Image', name: 'image', widget: 'image' },
-                { label: 'Date', name: 'date', widget: 'datetime' },
-              ],
             },
           ],
         },
@@ -180,6 +162,29 @@ export const cmsConfig: CustomCmsConfig = {
 
         // Example page to showcase all widgets.
         widgetShowcasePage,
+      ],
+    },
+    {
+      label: 'Blog Posts',
+      name: 'blogPosts',
+      folder: 'content/blog',
+      create: true,
+      slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+      fields: [
+        {
+          label: 'Show as page?',
+          name: 'showPage',
+          widget: 'boolean',
+        },
+        { label: 'Title', name: 'title', widget: 'string' },
+        {
+          label: 'Content',
+          name: 'content',
+          widget: 'markdown',
+          modes: ['rich_text', 'raw'],
+        },
+        { label: 'Image', name: 'image', widget: 'image' },
+        { label: 'Date', name: 'date', widget: 'datetime' },
       ],
     },
     // This collection is used to show off the "relation" widget in the

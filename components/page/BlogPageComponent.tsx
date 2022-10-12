@@ -1,3 +1,5 @@
+import BlogPostComponent from '../BlogPostComponent';
+
 export interface BlogPageComponentProps {
   title: string;
   subtitle: string;
@@ -28,34 +30,13 @@ const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
       <div className={'grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3'}>
         {sortedPosts.map((post, i) => {
           return (
-            <div key={i} className={'text-left border'}>
-              <div className={'h-72 w-auto'}>
-                <img
-                  className={'object-cover w-full h-full'}
-                  src={post.image}
-                />
-              </div>
-              <div className={'p-2'}>
-                <div className={'italic text-sm'}>
-                  {new Date(post.date).toLocaleDateString('en-us', {
-                    month: 'long',
-                    day: 'numeric',
-                    year: 'numeric',
-                  })}
-                  | (Category goes here)
-                </div>
-                <div className={'text-sm'}>(Tags go here)</div>
-                <h3 className={'text-xl py-1.5 font-bold'}>{post.title}</h3>
-                <div className={'line-clamp-5'}>{post.content}</div>
-                <button
-                  className={
-                    'mt-4 border rounded-lg py-1.5 px-3.5 bg-black text-white text-sm'
-                  }
-                >
-                  Read More
-                </button>
-              </div>
-            </div>
+            <BlogPostComponent
+              key={i}
+              title={post.title}
+              image={post.image}
+              date={post.date}
+              content={post.content}
+            />
           );
         })}
       </div>
