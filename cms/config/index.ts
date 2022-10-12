@@ -107,6 +107,41 @@ export const cmsConfig: CustomCmsConfig = {
           ],
         },
         {
+          label: 'Blog',
+          name: 'blog',
+          file: 'content/blog.md',
+          fields: [
+            {
+              label: 'Title',
+              name: 'title',
+              widget: 'string',
+            },
+            {
+              label: 'Subtitle',
+              name: 'subtitle',
+              widget: 'string',
+            },
+            {
+              label: 'Posts',
+              name: 'posts',
+              widget: 'list',
+              label_singular: 'Post',
+              add_to_top: true,
+              fields: [
+                { label: 'Title', name: 'title', widget: 'string' },
+                {
+                  label: 'Content',
+                  name: 'content',
+                  widget: 'markdown',
+                  modes: ['rich_text', 'raw'],
+                },
+                { label: 'Image', name: 'image', widget: 'image' },
+                { label: 'Date', name: 'date', widget: 'datetime' },
+              ],
+            },
+          ],
+        },
+        {
           label: 'About',
           name: 'about',
           file: 'content/about.md',

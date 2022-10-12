@@ -27,6 +27,9 @@ const HeaderComponent: React.FC = () => {
 
       {/* Desktop Menu */}
       <div className='hidden md:block font-bold'>
+        <a href='/blog' className='px-3'>
+          Blog
+        </a>
         <a href='/about' className='px-3'>
           About
         </a>
@@ -75,13 +78,16 @@ const HeaderComponent: React.FC = () => {
           <a href='/' className={'px-12 py-5 text-black'} key='Home'>
             Home
           </a>
+          <a href='/blog' className={'px-12 py-5 text-black'} key='Blog'>
+            Blog
+          </a>
           <a href='/about' className={'px-12 py-5 text-black'} key='About'>
             About
           </a>
           <a href='/contact' className={'px-12 py-5 text-black'} key='Contact'>
             Contact
           </a>
-          <a href='/widgets' className={'px-12 py-5 text-black'} key='Contact'>
+          <a href='/widgets' className={'px-12 py-5 text-black'} key='Widgets'>
             Widgets
           </a>
         </div>
