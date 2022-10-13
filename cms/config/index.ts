@@ -107,6 +107,23 @@ export const cmsConfig: CustomCmsConfig = {
           ],
         },
         {
+          label: 'Blog',
+          name: 'blog',
+          file: 'content/blogHeading.md',
+          fields: [
+            {
+              label: 'Title',
+              name: 'title',
+              widget: 'string',
+            },
+            {
+              label: 'Subtitle',
+              name: 'subtitle',
+              widget: 'string',
+            },
+          ],
+        },
+        {
           label: 'About',
           name: 'about',
           file: 'content/about.md',
@@ -145,6 +162,29 @@ export const cmsConfig: CustomCmsConfig = {
 
         // Example page to showcase all widgets.
         widgetShowcasePage,
+      ],
+    },
+    {
+      label: 'Blog Posts',
+      name: 'blogPosts',
+      folder: 'content/blog',
+      create: true,
+      slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+      fields: [
+        {
+          label: 'Show as page?',
+          name: 'showPage',
+          widget: 'boolean',
+        },
+        { label: 'Title', name: 'title', widget: 'string' },
+        { label: 'Date', name: 'date', widget: 'datetime' },
+        { label: 'Image', name: 'image', widget: 'image' },
+        {
+          label: 'Content',
+          name: 'content',
+          widget: 'markdown',
+          modes: ['rich_text', 'raw'],
+        },
       ],
     },
     // This collection is used to show off the "relation" widget in the
