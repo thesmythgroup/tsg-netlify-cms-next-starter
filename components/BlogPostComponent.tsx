@@ -5,6 +5,7 @@ const BlogPageComponent: React.FC<BlogPost> = ({
   content,
   date,
   image,
+  slug,
 }) => {
   return (
     <div className={'text-left border'}>
@@ -22,14 +23,13 @@ const BlogPageComponent: React.FC<BlogPost> = ({
         </div>
         <div className={'text-sm'}>(Tags go here)</div>
         <h3 className={'text-xl py-1.5 font-bold'}>{title}</h3>
-        <div className={'line-clamp-5'}>{content}</div>
-        <button
-          className={
-            'mt-4 border rounded-lg py-1.5 px-3.5 bg-black text-white text-sm'
-          }
+        <div className={'line-clamp-5 mb-4'}>{content}</div>
+        <a
+          href={`/blog/${slug}`}
+          className={'rounded-lg py-1.5 px-3.5 bg-black text-white text-sm'}
         >
           Read More
-        </button>
+        </a>
       </div>
     </div>
   );

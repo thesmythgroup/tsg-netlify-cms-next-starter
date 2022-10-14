@@ -4,6 +4,7 @@ import BlogPageComponent, {
   BlogPost,
 } from '../components/page/BlogPageComponent';
 import CollectionService from '../lib/CollectionService';
+import fs from 'fs';
 
 export const BlogPage: React.FC<BlogPageComponentProps> = ({
   title,
@@ -22,9 +23,18 @@ export function getStaticProps(): GetStaticPropsResult<BlogPageComponentProps> {
   const blogPageFileParsed = blogContentMarkdown.getParsedFiles();
   const blogMetadata = blogPageFileParsed[0];
 
-  const posts = new CollectionService<BlogPost[]>('./content/blog/*.md')
-    .getParsedFiles()
-    .flat();
+  const fileNames = fs.readdirSync('./content/blog');
+  const posts = fileNames.map((filename) => {
+    const post = new CollectionService<BlogPost>(
+      `./content/blog/${filename}`,
+    ).getParsedFiles()[0];
+
+    return {
+      ...post,
+      date: post.date.toString(),
+      slug: filename.replace('.md', ''),
+    };
+  });
 
   return {
     props: {

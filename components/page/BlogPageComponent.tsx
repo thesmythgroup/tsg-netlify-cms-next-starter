@@ -11,6 +11,7 @@ export interface BlogPost {
   title: string;
   content: string;
   date: string;
+  slug?: string;
 }
 
 const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
@@ -36,6 +37,7 @@ const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
               image={post.image}
               date={post.date}
               content={post.content}
+              slug={post.slug}
             />
           );
         })}
