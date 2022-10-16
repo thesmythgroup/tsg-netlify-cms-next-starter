@@ -10,7 +10,12 @@ const BlogPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
 
   return (
     <div className={'p-5'}>
-      <BlogPageComponent title={title} subtitle={subtitle} posts={[]} />
+      <BlogPageComponent
+        title={title}
+        subtitle={subtitle}
+        posts={[]}
+        pagination={{ current: 1, total: 1 }}
+      />
     </div>
   );
 };

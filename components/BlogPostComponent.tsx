@@ -25,7 +25,7 @@ const BlogPageComponent: React.FC<BlogPost> = ({
         <h3 className={'text-xl py-1.5 font-bold'}>{title}</h3>
         <div className={'line-clamp-5 mb-4'}>{content}</div>
         <a
-          href={`/blog/${slug}`}
+          href={`/blog/posts/${slug}`}
           className={'rounded-lg py-1.5 px-3.5 bg-black text-white text-sm'}
         >
           Read More

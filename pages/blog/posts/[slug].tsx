@@ -1,6 +1,6 @@
-import { BlogPost } from '../../components/page/BlogPageComponent';
-import BlogPostPageComponent from '../../components/page/BlogPostPageComponent';
-import CollectionService from '../../lib/CollectionService';
+import { BlogPost } from '../../../components/page/BlogPageComponent';
+import BlogPostPageComponent from '../../../components/page/BlogPostPageComponent';
+import CollectionService from '../../../lib/CollectionService';
 import fs from 'fs';
 
 export const BlogPostPage: React.FC<BlogPost> = ({
