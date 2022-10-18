@@ -172,9 +172,10 @@ export const cmsConfig: CustomCmsConfig = {
       slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
       fields: [
         {
-          label: 'Show as page?',
+          label: 'Preview as page?',
           name: 'showPage',
           widget: 'boolean',
+          required: false,
         },
         { label: 'Title', name: 'title', widget: 'string' },
         { label: 'Date', name: 'date', widget: 'datetime' },

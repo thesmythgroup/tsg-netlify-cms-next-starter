@@ -1,6 +1,7 @@
 import { PreviewTemplateComponentProps } from 'netlify-cms-core';
 import React from 'react';
 import BlogPostComponent from '../../components/BlogPostComponent';
+import BlogPostPageComponent from '../../components/page/BlogPostPageComponent';
 
 const BlogPostPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
   props,
@@ -12,17 +13,23 @@ const BlogPostPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
   const isPage = props.entry.getIn(['data', 'showPage']);
 
   return (
-    <div className={'max-w-2xl p-5 m-auto'}>
+    <div className={'p-5'}>
       {isPage ? (
-        // TODO: Add page preview
-        <div>hello page</div>
-      ) : (
-        <BlogPostComponent
+        <BlogPostPageComponent
           title={title}
           content={content}
           image={image}
           date={date}
         />
+      ) : (
+        <div className={'max-w-2xl m-auto'}>
+          <BlogPostComponent
+            title={title}
+            content={content}
+            image={image}
+            date={date}
+          />
+        </div>
       )}
     </div>
   );
