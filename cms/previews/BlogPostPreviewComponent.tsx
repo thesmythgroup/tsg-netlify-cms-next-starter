@@ -6,28 +6,34 @@ import BlogPostPageComponent from '../../components/page/BlogPostPageComponent';
 const BlogPostPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
   props,
 ) => {
+  const category = props.entry.getIn(['data', 'category']);
   const title = props.entry.getIn(['data', 'title']);
-  const content = props.entry.getIn(['data', 'content']);
-  const image = props.entry.getIn(['data', 'image']);
   const date = props.entry.getIn(['data', 'date']);
+  const image = props.entry.getIn(['data', 'image']);
+  const content = props.entry.getIn(['data', 'content']);
   const isPage = props.entry.getIn(['data', 'showPage']);
 
   return (
     <div className={'p-5'}>
       {isPage ? (
         <BlogPostPageComponent
-          title={title}
-          content={content}
-          image={image}
-          date={date}
+          post={{
+            category,
+            title,
+            date,
+            image,
+            content,
+          }}
+          relatedPosts={[]}
         />
       ) : (
         <div className={'max-w-2xl m-auto'}>
           <BlogPostComponent
+            category={category}
             title={title}
-            content={content}
-            image={image}
             date={date}
+            image={image}
+            content={content}
           />
         </div>
       )}

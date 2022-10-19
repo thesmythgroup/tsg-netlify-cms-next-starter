@@ -1,37 +1,39 @@
-import { BlogPost } from '../../../components/page/BlogPageComponent';
-import BlogPostPageComponent from '../../../components/page/BlogPostPageComponent';
-import CollectionService from '../../../lib/CollectionService';
+import BlogPostPageComponent, {
+  BlogPostPageProps,
+} from '../../../components/page/BlogPostPageComponent';
 import fs from 'fs';
+import {
+  getBlogPostBySlug,
+  getRelatedBlogPostsByCategory,
+} from '../../../lib/blog-posts';
 
-export const BlogPostPage: React.FC<BlogPost> = ({
-  title,
-  content,
-  date,
-  image,
+export const BlogPostPage: React.FC<BlogPostPageProps> = ({
+  post,
+  relatedPosts,
 }) => {
-  return (
-    <BlogPostPageComponent
-      title={title}
-      content={content}
-      date={date}
-      image={image}
-    />
-  );
+  return <BlogPostPageComponent post={post} relatedPosts={relatedPosts} />;
 };
 
 export default BlogPostPage;
 
 export function getStaticProps({ params }) {
-  const { title, content, date, image } = new CollectionService<BlogPost>(
-    `./content/blog/${params.slug}.md`,
-  ).getParsedFiles()[0];
+  const { category, title, content, date, image, categorySlug } =
+    getBlogPostBySlug(params.slug);
+
+  const relatedPosts = getRelatedBlogPostsByCategory(category, params.slug);
 
   return {
     props: {
-      title,
-      content,
-      date: date.toString(),
-      image,
+      post: {
+        category,
+        title,
+        content,
+        date: date.toString(),
+        image,
+        slug: params.slug,
+        categorySlug,
+      },
+      relatedPosts,
     },
   };
 }

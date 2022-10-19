@@ -177,6 +177,15 @@ export const cmsConfig: CustomCmsConfig = {
           widget: 'boolean',
           required: false,
         },
+        {
+          label: 'Category',
+          name: 'category',
+          widget: 'relation',
+          collection: 'categories',
+          search_fields: ['name'],
+          value_field: 'name',
+          display_fields: ['name'],
+        },
         { label: 'Title', name: 'title', widget: 'string' },
         { label: 'Date', name: 'date', widget: 'datetime' },
         { label: 'Image', name: 'image', widget: 'image' },
@@ -187,6 +196,18 @@ export const cmsConfig: CustomCmsConfig = {
           modes: ['rich_text', 'raw'],
         },
       ],
+    },
+    {
+      label: 'Blog Post Categories',
+      name: 'categories',
+      folder: 'content/categories',
+      create: true,
+      identifier_field: 'name',
+      slug: '{{slug}}',
+      editor: {
+        preview: false,
+      },
+      fields: [{ label: 'Name', name: 'name', widget: 'string' }],
     },
     // This collection is used to show off the "relation" widget in the
     // WidgetShowcasePage.
