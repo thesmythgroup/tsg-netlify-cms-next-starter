@@ -1,10 +1,14 @@
+import RelatedBlogPostsComponent from '../RelatedBlogPostsComponent';
 import { BlogPost } from './BlogPageComponent';
 
-const BlogPostPageComponent: React.FC<BlogPost> = ({
-  title,
-  content,
-  date,
-  image,
+export interface BlogPostPageProps {
+  post: BlogPost;
+  relatedPosts: BlogPost[];
+}
+
+const BlogPostPageComponent: React.FC<BlogPostPageProps> = ({
+  post: { date, categorySlug, category, title, image, content },
+  relatedPosts,
 }) => {
   return (
     <>
@@ -18,7 +22,12 @@ const BlogPostPageComponent: React.FC<BlogPost> = ({
               day: 'numeric',
               year: 'numeric',
             })}
-            | (Category goes here)
+            |
+            {categorySlug ? (
+              <a href={`/blog/categories/${categorySlug}`}>{category}</a>
+            ) : (
+              category
+            )}
           </div>
           <h2 className={'text-4xl my-2'}>{title}</h2>
           <div className={'w-auto h-[25rem]'}>
@@ -27,12 +36,11 @@ const BlogPostPageComponent: React.FC<BlogPost> = ({
           <div className={'p-2'}>{content}</div>
           <div className={'italic text-sm'}>(Tags go here)</div>
         </div>
-        <div className={'col-span-2 border rounded h-min'}>
-          <h3 className={'text-center my-4 font-bold underline text-lg'}>
-            Related Posts
-          </h3>
-          <div className={'py-6'}></div>
-        </div>
+        {relatedPosts.length > 0 && (
+          <div className={'col-span-2 border rounded h-min'}>
+            <RelatedBlogPostsComponent posts={relatedPosts} />
+          </div>
+        )}
       </div>
     </>
   );

@@ -1,11 +1,13 @@
 import { BlogPost } from './page/BlogPageComponent';
 
-const BlogPageComponent: React.FC<BlogPost> = ({
+const BlogPostComponent: React.FC<BlogPost> = ({
+  category,
   title,
-  content,
   date,
   image,
+  content,
   slug,
+  categorySlug,
 }) => {
   return (
     <div className={'text-left border'}>
@@ -19,7 +21,12 @@ const BlogPageComponent: React.FC<BlogPost> = ({
             day: 'numeric',
             year: 'numeric',
           })}
-          | (Category goes here)
+          |
+          {categorySlug ? (
+            <a href={`/blog/categories/${categorySlug}`}>{category}</a>
+          ) : (
+            category
+          )}
         </div>
         <div className={'text-sm'}>(Tags go here)</div>
         <h3 className={'text-xl py-1.5 font-bold'}>{title}</h3>
@@ -34,4 +41,4 @@ const BlogPageComponent: React.FC<BlogPost> = ({
     </div>
   );
 };
-export default BlogPageComponent;
+export default BlogPostComponent;

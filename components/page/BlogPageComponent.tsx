@@ -8,11 +8,13 @@ export interface BlogPageComponentProps {
 }
 
 export interface BlogPost {
-  image: string;
+  category: string;
   title: string;
-  content: string;
   date: string;
+  image: string;
+  content: string;
   slug?: string;
+  categorySlug?: string;
 }
 
 export interface Pagination {
@@ -27,7 +29,7 @@ const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
   pagination,
 }) => {
   return (
-    <div className={'pb-20 flex md:text-center text-left flex-col'}>
+    <div className={'flex md:text-center text-left flex-col'}>
       <h2 className={'text-5xl font-bold mb-6 pt-10 md:pt-0'}>{title}</h2>
       <div className={'mb-20'}>{subtitle}</div>
       <div className={'grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3'}>
@@ -35,11 +37,13 @@ const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
           return (
             <BlogPostComponent
               key={i}
+              category={post.category}
               title={post.title}
-              image={post.image}
               date={post.date}
+              image={post.image}
               content={post.content}
               slug={post.slug}
+              categorySlug={post.categorySlug}
             />
           );
         })}
