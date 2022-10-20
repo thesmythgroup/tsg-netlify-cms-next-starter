@@ -10,11 +10,13 @@ export interface BlogPageComponentProps {
 export interface BlogPost {
   category: string;
   title: string;
+  tags?: string[];
   date: string;
   image: string;
   content: string;
   slug?: string;
   categorySlug?: string;
+  tagSlugs?: string[];
 }
 
 export interface Pagination {
@@ -34,18 +36,7 @@ const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
       <div className={'mb-20'}>{subtitle}</div>
       <div className={'grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3'}>
         {posts.map((post, i) => {
-          return (
-            <BlogPostComponent
-              key={i}
-              category={post.category}
-              title={post.title}
-              date={post.date}
-              image={post.image}
-              content={post.content}
-              slug={post.slug}
-              categorySlug={post.categorySlug}
-            />
-          );
+          return <BlogPostComponent key={i} post={post} />;
         })}
       </div>
       <div className={'flex justify-center mt-20'}>

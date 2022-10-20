@@ -1,40 +1,29 @@
 import { PreviewTemplateComponentProps } from 'netlify-cms-core';
 import React from 'react';
 import BlogPostComponent from '../../components/BlogPostComponent';
+import { BlogPost } from '../../components/page/BlogPageComponent';
 import BlogPostPageComponent from '../../components/page/BlogPostPageComponent';
 
 const BlogPostPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
   props,
 ) => {
-  const category = props.entry.getIn(['data', 'category']);
-  const title = props.entry.getIn(['data', 'title']);
-  const date = props.entry.getIn(['data', 'date']);
-  const image = props.entry.getIn(['data', 'image']);
-  const content = props.entry.getIn(['data', 'content']);
+  const post: BlogPost = {
+    category: props.entry.getIn(['data', 'category']),
+    title: props.entry.getIn(['data', 'title']),
+    tags: props.entry.getIn(['data', 'tags']),
+    date: props.entry.getIn(['data', 'date']),
+    image: props.entry.getIn(['data', 'image']),
+    content: props.entry.getIn(['data', 'content']),
+  };
   const isPage = props.entry.getIn(['data', 'showPage']);
 
   return (
     <div className={'p-5'}>
       {isPage ? (
-        <BlogPostPageComponent
-          post={{
-            category,
-            title,
-            date,
-            image,
-            content,
-          }}
-          relatedPosts={[]}
-        />
+        <BlogPostPageComponent post={post} relatedPosts={[]} />
       ) : (
         <div className={'max-w-2xl m-auto'}>
-          <BlogPostComponent
-            category={category}
-            title={title}
-            date={date}
-            image={image}
-            content={content}
-          />
+          <BlogPostComponent post={post} />
         </div>
       )}
     </div>

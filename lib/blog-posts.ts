@@ -23,18 +23,34 @@ function fetchPostContent(): BlogPost[] {
       };
     });
 
+  // Read all tags so they can be paried with posts
+  const tags = fs.readdirSync('./content/tags').map((tagFilename) => {
+    const tag = new CollectionService<{ name: string }>(
+      `./content/tags/${tagFilename}`,
+    ).getParsedFiles()[0];
+
+    return {
+      name: tag.name,
+      slug: tagFilename.replace('.md', ''),
+    };
+  });
+
   const fileNames = fs.readdirSync('./content/blog');
   const posts = fileNames.map((filename) => {
     const post = new CollectionService<BlogPost>(
       `./content/blog/${filename}`,
     ).getParsedFiles()[0];
     const category = categories.find((cat) => cat.name === post.category);
+    const postTags = post.tags?.map((tag) => {
+      return tags.find((t) => t.name === tag);
+    });
 
     return {
       ...post,
       date: post.date.toString(),
       slug: filename.replace('.md', ''),
       categorySlug: category?.slug || '',
+      tagSlugs: postTags?.map((t) => t.slug) || [],
     };
   });
 
@@ -61,7 +77,7 @@ export function getPaginatedBlogPosts(page: number): BlogPost[] {
   );
 }
 
-export function getCategorizedBlogPosts(cat: string): BlogPost[] {
+export function getBlogPostsByCategory(cat: string): BlogPost[] {
   return fetchPostContent().filter((post) => {
     return post.categorySlug?.toLowerCase() === cat;
   });
@@ -71,11 +87,22 @@ export function getBlogPostBySlug(slug: string): BlogPost {
   return fetchPostContent().find((post) => post.slug === slug);
 }
 
-export function getRelatedBlogPostsByCategory(
+export function getRelatedBlogPosts(
   category: string,
   currentPostSlug: string,
+  tags?: string[],
 ): BlogPost[] {
   return fetchPostContent().filter((post) => {
-    return post.category === category && post.slug !== currentPostSlug;
+    return (
+      (post.category === category ||
+        tags?.some((t) => post.tags?.includes(t))) &&
+      post.slug !== currentPostSlug
+    );
+  });
+}
+
+export function getBlogPostsByTag(tag: string): BlogPost[] {
+  return fetchPostContent().filter((post) => {
+    return post.tagSlugs?.includes(tag);
   });
 }

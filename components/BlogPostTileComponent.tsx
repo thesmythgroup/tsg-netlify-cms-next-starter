@@ -1,10 +1,11 @@
 import { BlogPost } from './page/BlogPageComponent';
 
-const BlogPostTileComponent: React.FC<BlogPost> = ({
-  title,
-  date,
-  image,
-  slug,
+interface BlogPostTileComponentProps {
+  post: BlogPost;
+}
+
+const BlogPostTileComponent: React.FC<BlogPostTileComponentProps> = ({
+  post: { title, date, image, slug },
 }) => {
   return (
     <a className={'flex items-center'} href={`/blog/posts/${slug}`}>
