@@ -7,7 +7,7 @@ export interface BlogPostPageProps {
 }
 
 const BlogPostPageComponent: React.FC<BlogPostPageProps> = ({
-  post: { date, categorySlug, category, title, image, content },
+  post: { date, categorySlug, category, title, image, content, tags, tagSlugs },
   relatedPosts,
 }) => {
   return (
@@ -34,7 +34,20 @@ const BlogPostPageComponent: React.FC<BlogPostPageProps> = ({
             <img className={'object-cover w-full h-full rounded'} src={image} />
           </div>
           <div className={'p-2'}>{content}</div>
-          <div className={'italic text-sm'}>(Tags go here)</div>
+          <div className={'text-xs py-1'}>
+            {tags?.map((tag, i) => {
+              const tagSlug = tagSlugs?.[i];
+              return (
+                <span key={i} className={'mr-2 border rounded-lg px-2 py-0.5'}>
+                  {tagSlug ? (
+                    <a href={`/blog/tags/${tagSlug}`}>#{tag}</a>
+                  ) : (
+                    `#${tag}`
+                  )}
+                </span>
+              );
+            })}
+          </div>
         </div>
         {relatedPosts.length > 0 && (
           <div className={'col-span-2 border rounded h-min'}>

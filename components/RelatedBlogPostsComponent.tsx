@@ -16,15 +16,9 @@ const RelatedBlogPostsComponent: React.FC<RelatedBlogPostsComponentProps> = ({
       <div className={'p-6'}>
         {posts?.map((post, i) => {
           return (
-            <BlogPostTileComponent
-              key={i}
-              title={post.title}
-              date={post.date}
-              category={post.category}
-              image={post.image}
-              content={post.content}
-              slug={post.slug}
-            />
+            <div className={'mb-4'} key={i}>
+              <BlogPostTileComponent post={post} />
+            </div>
           );
         })}
       </div>

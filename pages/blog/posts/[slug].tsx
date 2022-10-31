@@ -4,7 +4,7 @@ import BlogPostPageComponent, {
 import fs from 'fs';
 import {
   getBlogPostBySlug,
-  getRelatedBlogPostsByCategory,
+  getRelatedBlogPosts,
 } from '../../../lib/blog-posts';
 
 export const BlogPostPage: React.FC<BlogPostPageProps> = ({
@@ -17,21 +17,20 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
 export default BlogPostPage;
 
 export function getStaticProps({ params }) {
-  const { category, title, content, date, image, categorySlug } =
-    getBlogPostBySlug(params.slug);
+  const post = getBlogPostBySlug(params.slug);
 
-  const relatedPosts = getRelatedBlogPostsByCategory(category, params.slug);
+  const relatedPosts = getRelatedBlogPosts(
+    post.category,
+    params.slug,
+    post.tags,
+  );
 
   return {
     props: {
       post: {
-        category,
-        title,
-        content,
-        date: date.toString(),
-        image,
+        ...post,
+        date: post.date.toString(),
         slug: params.slug,
-        categorySlug,
       },
       relatedPosts,
     },

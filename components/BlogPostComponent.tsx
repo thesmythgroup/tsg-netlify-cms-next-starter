@@ -1,13 +1,21 @@
 import { BlogPost } from './page/BlogPageComponent';
 
-const BlogPostComponent: React.FC<BlogPost> = ({
-  category,
-  title,
-  date,
-  image,
-  content,
-  slug,
-  categorySlug,
+interface BlogPostComponentProps {
+  post: BlogPost;
+}
+
+const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
+  post: {
+    date,
+    categorySlug,
+    category,
+    title,
+    image,
+    content,
+    slug,
+    tags,
+    tagSlugs,
+  },
 }) => {
   return (
     <div className={'text-left border'}>
@@ -28,8 +36,21 @@ const BlogPostComponent: React.FC<BlogPost> = ({
             category
           )}
         </div>
-        <div className={'text-sm'}>(Tags go here)</div>
         <h3 className={'text-xl py-1.5 font-bold'}>{title}</h3>
+        <div className={'text-xs py-1'}>
+          {tags?.map((tag, i) => {
+            const tagSlug = tagSlugs?.[i];
+            return (
+              <span key={i} className={'mr-2 border rounded-lg px-2 py-0.5'}>
+                {tagSlug ? (
+                  <a href={`/blog/tags/${tagSlug}`}>#{tag}</a>
+                ) : (
+                  `#${tag}`
+                )}
+              </span>
+            );
+          })}
+        </div>
         <div className={'line-clamp-5 mb-4'}>{content}</div>
         <a
           href={`/blog/posts/${slug}`}
