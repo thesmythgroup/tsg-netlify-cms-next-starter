@@ -1,3 +1,6 @@
 ---
-name: Pretty Flowers
+en:
+  name: Pretty Flowers
+es:
+  name: Pretty Flowers
 ---

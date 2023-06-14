@@ -16,7 +16,7 @@ export interface IndexComponentProps {
   features: IndexFeature[];
   embeddedVideo: string;
   showGallery: boolean;
-  gallery: IndexGalleryImage[];
+  gallery?: IndexGalleryImage[];
 }
 
 const IndexPageComponent: React.FC<IndexComponentProps> = ({
@@ -32,7 +32,7 @@ const IndexPageComponent: React.FC<IndexComponentProps> = ({
       <h1 className={'text-2xl mb-8'}>{title}</h1>
       <div className={'mb-8'}>{intro}</div>
       <div className={'md:grid grid-cols-3 mb-8 gap-4'}>
-        {features.map((feature, i) => {
+        {features?.map((feature, i) => {
           return (
             <div key={i}>
               <h2 className={'text-xl mb-4'}>{feature.title}</h2>
@@ -50,11 +50,13 @@ const IndexPageComponent: React.FC<IndexComponentProps> = ({
         </p>
       </div>
 
-      <div className='mb-5'>
-        <EmbeddedVideoComponent url={embeddedVideo} />
-      </div>
+      {embeddedVideo ? (
+        <div className='mb-5'>
+          <EmbeddedVideoComponent url={embeddedVideo} />
+        </div>
+      ) : null}
 
-      {showGallery ? (
+      {showGallery && gallery ? (
         <div className={'grid grid-cols-3'}>
           {gallery.map((item, i) => {
             return (

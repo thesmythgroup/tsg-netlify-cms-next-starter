@@ -8,7 +8,7 @@ module.exports = {
   target: 'web',
   output: {
     filename: 'cms.js',
-    path: path.resolve(__dirname, 'out/admin/assets'),
+    path: path.resolve(__dirname, 'out/assets'),
   },
   mode: 'development',
   devtool: 'source-map',

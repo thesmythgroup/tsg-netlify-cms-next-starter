@@ -6,6 +6,7 @@ import {
   CmsFieldBase,
 } from 'netlify-cms-core';
 import { widgetShowcasePage } from './widget-showcase-page';
+import { DEFAULT_LOCALE, LOCALES } from '../../lib/locale-settings';
 
 /**
  * This is a helper/utility type that allows us to override a single
@@ -52,40 +53,57 @@ export const cmsConfig: CustomCmsConfig = {
   local_backend: true,
   media_folder: '/public/uploads',
   public_folder: '/uploads',
+  i18n: {
+    structure: 'multiple_folders',
+    locales: LOCALES,
+    default_locale: DEFAULT_LOCALE,
+  },
   collections: [
     {
       label: 'Pages',
       name: 'pages',
+      i18n: {
+        structure: 'single_file',
+        locales: LOCALES,
+      },
       files: [
         {
           label: 'Home',
           name: 'home',
           file: 'content/home.md',
+          i18n: true,
           fields: [
             {
               label: 'Title',
               name: 'title',
               widget: 'string',
+              i18n: true,
             },
             {
               label: 'Intro',
               name: 'intro',
               widget: 'markdown',
+              i18n: true,
             },
             {
               label: 'Show Gallery?',
               name: 'showGallery',
               widget: 'boolean',
+              default: false,
+              i18n: true,
             },
             {
               label: 'Video',
               name: 'embeddedVideo',
               widget: 'embeddedVideo',
+              i18n: true,
             },
             {
               label: 'Features',
               name: 'features',
               widget: 'list',
+              required: false,
+              i18n: true,
               fields: [
                 { label: 'Title', name: 'title', widget: 'string' },
                 {
@@ -102,6 +120,7 @@ export const cmsConfig: CustomCmsConfig = {
               widget: 'list',
               label_singular: 'Image',
               add_to_top: true,
+              required: false,
               fields: [{ label: 'Image', name: 'image', widget: 'image' }],
             },
           ],
@@ -110,16 +129,19 @@ export const cmsConfig: CustomCmsConfig = {
           label: 'Blog',
           name: 'blog',
           file: 'content/blogHeading.md',
+          i18n: true,
           fields: [
             {
               label: 'Title',
               name: 'title',
               widget: 'string',
+              i18n: true,
             },
             {
               label: 'Subtitle',
               name: 'subtitle',
               widget: 'string',
+              i18n: true,
             },
           ],
         },
@@ -127,11 +149,13 @@ export const cmsConfig: CustomCmsConfig = {
           label: 'About',
           name: 'about',
           file: 'content/about.md',
+          i18n: true,
           fields: [
             {
               label: 'Content',
               name: 'content',
               widget: 'string',
+              i18n: true,
             },
           ],
         },
@@ -139,11 +163,13 @@ export const cmsConfig: CustomCmsConfig = {
           label: 'Contact',
           name: 'contact',
           file: 'content/contact.md',
+          i18n: true,
           fields: [
             {
               label: 'Intro',
               name: 'intro',
               widget: 'string',
+              i18n: true,
             },
           ],
         },
@@ -151,11 +177,13 @@ export const cmsConfig: CustomCmsConfig = {
           label: 'Embedded Video Example',
           name: 'embedded-video-example',
           file: 'content/embedded-video-example.md',
+          i18n: true,
           fields: [
             {
               label: 'Video',
               name: 'embeddedVideo',
               widget: 'embeddedVideo',
+              i18n: true,
             },
           ],
         },
@@ -170,12 +198,17 @@ export const cmsConfig: CustomCmsConfig = {
       folder: 'content/blog',
       create: true,
       slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+      i18n: {
+        structure: 'single_file',
+        locales: LOCALES,
+      },
       fields: [
         {
           label: 'Preview as page?',
           name: 'showPage',
           widget: 'boolean',
           required: false,
+          i18n: true,
         },
         {
           label: 'Category',
@@ -185,9 +218,10 @@ export const cmsConfig: CustomCmsConfig = {
           search_fields: ['name'],
           value_field: 'name',
           display_fields: ['name'],
+          i18n: true,
         },
-        { label: 'Title', name: 'title', widget: 'string' },
-        { label: 'Date', name: 'date', widget: 'datetime' },
+        { label: 'Title', name: 'title', widget: 'string', i18n: true },
+        { label: 'Date', name: 'date', widget: 'datetime', i18n: true },
         {
           label: 'Tags',
           name: 'tags',
@@ -197,13 +231,15 @@ export const cmsConfig: CustomCmsConfig = {
           search_fields: ['name'],
           value_field: 'name',
           display_fields: ['name'],
+          i18n: true,
         },
-        { label: 'Image', name: 'image', widget: 'image' },
+        { label: 'Image', name: 'image', widget: 'image', i18n: true },
         {
           label: 'Content',
           name: 'content',
           widget: 'markdown',
           modes: ['rich_text', 'raw'],
+          i18n: true,
         },
       ],
     },
@@ -217,7 +253,11 @@ export const cmsConfig: CustomCmsConfig = {
       editor: {
         preview: false,
       },
-      fields: [{ label: 'Name', name: 'name', widget: 'string' }],
+      i18n: {
+        structure: 'single_file',
+        locales: LOCALES,
+      },
+      fields: [{ label: 'Name', name: 'name', widget: 'string', i18n: true }],
     },
     {
       label: 'Blog Post Tags',
@@ -226,10 +266,14 @@ export const cmsConfig: CustomCmsConfig = {
       create: true,
       identifier_field: 'name',
       slug: '{{slug}}',
+      i18n: {
+        structure: 'single_file',
+        locales: LOCALES,
+      },
       editor: {
         preview: false,
       },
-      fields: [{ label: 'Name', name: 'name', widget: 'string' }],
+      fields: [{ label: 'Name', name: 'name', widget: 'string', i18n: true }],
     },
     // This collection is used to show off the "relation" widget in the
     // WidgetShowcasePage.
@@ -238,18 +282,26 @@ export const cmsConfig: CustomCmsConfig = {
       name: 'sales-offices',
       folder: 'content/sales-offices',
       create: true,
+      i18n: true,
       fields: [
         {
           label: 'Name',
           name: 'title',
           widget: 'string',
+          i18n: true,
         },
         {
           label: 'Address',
           name: 'address',
           widget: 'string',
+          i18n: true,
         },
-        { label: 'Description', name: 'description', widget: 'markdown' },
+        {
+          label: 'Description',
+          name: 'description',
+          widget: 'markdown',
+          i18n: true,
+        },
       ],
     },
   ],

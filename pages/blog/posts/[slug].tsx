@@ -1,11 +1,8 @@
 import BlogPostPageComponent, {
   BlogPostPageProps,
 } from '../../../components/page/BlogPostPageComponent';
-import fs from 'fs';
-import {
-  getBlogPostBySlug,
-  getRelatedBlogPosts,
-} from '../../../lib/blog-posts';
+import { BlogPostResolver } from '../../../lib/BlogPostResolver';
+import { resolveLocalizedPaths } from '../../../lib/resolve-localized-paths';
 
 export const BlogPostPage: React.FC<BlogPostPageProps> = ({
   post,
@@ -16,10 +13,14 @@ export const BlogPostPage: React.FC<BlogPostPageProps> = ({
 
 export default BlogPostPage;
 
-export function getStaticProps({ params }) {
-  const post = getBlogPostBySlug(params.slug);
+export async function getStaticProps({ params, locale }) {
+  const blogPostResolver = await new BlogPostResolver(
+    locale,
+  ).fetchPostContent();
 
-  const relatedPosts = getRelatedBlogPosts(
+  const post = blogPostResolver.getBlogPostBySlug(params.slug);
+
+  const relatedPosts = blogPostResolver.getRelatedBlogPosts(
     post.category,
     params.slug,
     post.tags,
@@ -37,15 +38,8 @@ export function getStaticProps({ params }) {
   };
 }
 
-export function getStaticPaths() {
-  const files = fs.readdirSync('./content/blog');
-  const paths = files.map((filename) => {
-    return {
-      params: {
-        slug: filename.replace('.md', ''),
-      },
-    };
-  });
+export async function getStaticPaths() {
+  const paths = await resolveLocalizedPaths('blog');
 
   return {
     paths,

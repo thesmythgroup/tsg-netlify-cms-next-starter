@@ -1,3 +1,6 @@
 ---
-name: Fun
+en:
+  name: Fun
+es:
+  name: Fun
 ---

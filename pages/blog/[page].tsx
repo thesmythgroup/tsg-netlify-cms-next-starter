@@ -3,8 +3,8 @@ import BlogPageComponent, {
   BlogPageComponentProps,
 } from '../../components/page/BlogPageComponent';
 import CollectionService from '../../lib/CollectionService';
-import { countBlogPosts, getPaginatedBlogPosts } from '../../lib/blog-posts';
 import { BLOG_POSTS_PER_PAGE } from '../../lib/constants';
+import { BlogPostResolver } from '../../lib/BlogPostResolver';
 
 export const BlogPage: React.FC<BlogPageComponentProps> = ({
   title,
@@ -24,20 +24,26 @@ export const BlogPage: React.FC<BlogPageComponentProps> = ({
 
 export default BlogPage;
 
-export function getStaticProps({
+export async function getStaticProps({
+  locale,
   params,
-}): GetStaticPropsResult<BlogPageComponentProps> {
+}): Promise<GetStaticPropsResult<BlogPageComponentProps>> {
+  console.log('blog', params, locale);
+  const blogPostResolver = await new BlogPostResolver(
+    locale,
+  ).fetchPostContent();
+
   const blogContentMarkdown = new CollectionService<BlogPageComponentProps>(
-    './content/blogHeading.md',
+    `./content/${locale}/blogHeading.md`,
   );
   const blogPageFileParsed = blogContentMarkdown.getParsedFiles();
   const blogMetadata = blogPageFileParsed[0];
 
   const currentPage = +params.page || 1;
-  const posts = getPaginatedBlogPosts(currentPage);
+  const posts = blogPostResolver.getPaginatedBlogPosts(currentPage);
   const pagination = {
     current: currentPage,
-    total: Math.ceil(countBlogPosts() / BLOG_POSTS_PER_PAGE),
+    total: Math.ceil(blogPostResolver.countBlogPosts() / BLOG_POSTS_PER_PAGE),
   };
 
   return {
@@ -50,8 +56,14 @@ export function getStaticProps({
   };
 }
 
-export function getStaticPaths() {
-  const pages = Math.ceil(countBlogPosts() / BLOG_POSTS_PER_PAGE);
+export async function getStaticPaths({ locale }) {
+  const blogPostResolver = await new BlogPostResolver(
+    locale,
+  ).fetchPostContent();
+
+  const pages = Math.ceil(
+    blogPostResolver.countBlogPosts() / BLOG_POSTS_PER_PAGE,
+  );
   const paths = [...Array(pages)].map((_, index) => ({
     params: { page: (index + 1).toString() },
   }));

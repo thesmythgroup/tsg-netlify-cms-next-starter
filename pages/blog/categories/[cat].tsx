@@ -1,8 +1,8 @@
 import { GetStaticPropsResult } from 'next';
 import { BlogPost } from '../../../components/page/BlogPageComponent';
-import { getBlogPostsByCategory } from '../../../lib/blog-posts';
 import BlogPostComponent from '../../../components/BlogPostComponent';
-import fs from 'fs';
+import { BlogPostResolver } from '../../../lib/BlogPostResolver';
+import { resolveLocalizedPaths } from '../../../lib/resolve-localized-paths';
 
 interface BlogCategoryPageProps {
   posts: BlogPost[];
@@ -27,10 +27,15 @@ export const CategoryBlogPage: React.FC<BlogCategoryPageProps> = ({
 
 export default CategoryBlogPage;
 
-export function getStaticProps({
+export async function getStaticProps({
+  locale,
   params,
-}): GetStaticPropsResult<BlogCategoryPageProps> {
-  const posts = getBlogPostsByCategory(params.cat);
+}): Promise<GetStaticPropsResult<BlogCategoryPageProps>> {
+  const blogPostResolver = await new BlogPostResolver(
+    locale,
+  ).fetchPostContent();
+
+  const posts = blogPostResolver.getBlogPostsByCategory(params.cat);
 
   return {
     props: {
@@ -39,18 +44,18 @@ export function getStaticProps({
   };
 }
 
-export function getStaticPaths() {
-  const files = fs.readdirSync('./content/categories');
-  const paths = files.map((filename) => {
-    return {
-      params: {
-        cat: filename.replace('.md', ''),
-      },
-    };
-  });
+export async function getStaticPaths() {
+  const paths = await resolveLocalizedPaths('categories');
 
   return {
-    paths,
+    paths: paths.map((path) => {
+      return {
+        params: {
+          cat: path.params.slug,
+        },
+        locale: path.locale,
+      };
+    }),
     fallback: false,
   };
 }

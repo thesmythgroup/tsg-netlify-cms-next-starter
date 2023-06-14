@@ -16,11 +16,11 @@ const IndexPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
   /**
    * Example of loading in a collection from the CMS data
    */
-  const features = props.entry.getIn(['data', 'features']).toJS();
+  const features = props.entry.getIn(['data', 'features'])?.toJS();
 
   const embeddedVideo = props.entry.getIn(['data', 'embeddedVideo']);
   const showGallery = props.entry.getIn(['data', 'showGallery']);
-  const gallery = props.entry.getIn(['data', 'gallery']).toJS();
+  const gallery = props.entry.getIn(['data', 'gallery'])?.toJS();
 
   return (
     // Send the props down into the component.
