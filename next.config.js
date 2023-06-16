@@ -11,6 +11,16 @@ const config = withOptimizedImages({
     locales: LOCALES,
     defaultLocale: DEFAULT_LOCALE,
   },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/admin',
+          destination: '/admin/index.html',
+        },
+      ],
+    };
+  },
   webpack: (cfg) => {
     cfg.module.rules.push({
       test: /\.md$/,

@@ -44,6 +44,15 @@ Before you can go live with this site, you will need to do the following items:
 
 ## Development Notes
 
+### Decap CMS and i18n support
+
+Translation support is in beta, but works quite well. Regardless, if i18n support is
+needed, adhere to the following guidelines:
+
+- `boolean` widgets: Always provide a `default` option for boolean widgets, do
+  not use the `default` widget value option, as this will result in `null` being
+  provided to the translated field, which breaks serialization of the content data.
+
 ### Page Components Defined in `./pages` Should Only be "Entry" Components
 
 Why? Netlify CMS does not have any nice preview styles out-of-the-box, so if
