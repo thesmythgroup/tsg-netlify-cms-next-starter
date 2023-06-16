@@ -154,7 +154,8 @@ export const cmsConfig: CustomCmsConfig = {
             {
               label: 'Content',
               name: 'content',
-              widget: 'string',
+              widget: 'markdown',
+              modes: ['rich_text', 'raw'],
               i18n: true,
             },
           ],
@@ -194,6 +195,7 @@ export const cmsConfig: CustomCmsConfig = {
     },
     {
       label: 'Blog Posts',
+      label_singular: 'Blog Post',
       name: 'blogPosts',
       folder: 'content/blog',
       create: true,
@@ -207,7 +209,7 @@ export const cmsConfig: CustomCmsConfig = {
           label: 'Preview as page?',
           name: 'showPage',
           widget: 'boolean',
-          required: false,
+          default: false,
           i18n: true,
         },
         {
@@ -245,6 +247,7 @@ export const cmsConfig: CustomCmsConfig = {
     },
     {
       label: 'Blog Post Categories',
+      label_singular: 'Category',
       name: 'categories',
       folder: 'content/categories',
       create: true,
@@ -261,6 +264,7 @@ export const cmsConfig: CustomCmsConfig = {
     },
     {
       label: 'Blog Post Tags',
+      label_singular: 'Tag',
       name: 'tags',
       folder: 'content/tags',
       create: true,
@@ -279,10 +283,17 @@ export const cmsConfig: CustomCmsConfig = {
     // WidgetShowcasePage.
     {
       label: 'Sales Offices',
+      label_singular: 'Sales Office',
       name: 'sales-offices',
       folder: 'content/sales-offices',
       create: true,
-      i18n: true,
+      i18n: {
+        structure: 'single_file',
+        locales: LOCALES,
+      },
+      editor: {
+        preview: false,
+      },
       fields: [
         {
           label: 'Name',

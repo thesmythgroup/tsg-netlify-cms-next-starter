@@ -1,10 +1,12 @@
 import { GetStaticPropsResult } from 'next';
+import { LOCALES } from '../../lib/locale-settings';
 import BlogPageComponent, {
   BlogPageComponentProps,
 } from '../../components/page/BlogPageComponent';
 import CollectionService from '../../lib/CollectionService';
 import { BLOG_POSTS_PER_PAGE } from '../../lib/constants';
 import { BlogPostResolver } from '../../lib/BlogPostResolver';
+import { LocalizedMarkdownContentInterface } from '../../interfaces/LocalizedMarkdownContent.interface';
 
 export const BlogPage: React.FC<BlogPageComponentProps> = ({
   title,
@@ -28,16 +30,15 @@ export async function getStaticProps({
   locale,
   params,
 }): Promise<GetStaticPropsResult<BlogPageComponentProps>> {
-  console.log('blog', params, locale);
   const blogPostResolver = await new BlogPostResolver(
     locale,
   ).fetchPostContent();
 
-  const blogContentMarkdown = new CollectionService<BlogPageComponentProps>(
-    `./content/${locale}/blogHeading.md`,
-  );
+  const blogContentMarkdown = new CollectionService<
+    LocalizedMarkdownContentInterface<BlogPageComponentProps>
+  >('./content/blogHeading.md');
   const blogPageFileParsed = blogContentMarkdown.getParsedFiles();
-  const blogMetadata = blogPageFileParsed[0];
+  const blogMetadata = blogPageFileParsed[0][locale];
 
   const currentPage = +params.page || 1;
   const posts = blogPostResolver.getPaginatedBlogPosts(currentPage);
@@ -64,9 +65,13 @@ export async function getStaticPaths({ locale }) {
   const pages = Math.ceil(
     blogPostResolver.countBlogPosts() / BLOG_POSTS_PER_PAGE,
   );
-  const paths = [...Array(pages)].map((_, index) => ({
-    params: { page: (index + 1).toString() },
-  }));
+
+  const paths = LOCALES.map((locale) => {
+    return [...Array(pages)].map((_, index) => ({
+      params: { page: (index + 1).toString() },
+      locale: locale,
+    }));
+  }).flat();
 
   return {
     paths: paths,

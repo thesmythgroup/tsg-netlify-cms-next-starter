@@ -2,5 +2,5 @@
 en:
   name: Food
 es:
-  name: Food
+  name: Comida
 ---

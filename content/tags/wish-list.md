@@ -2,5 +2,5 @@
 en:
   name: Wish List
 es:
-  name: Wish List
+  name: Lista de deseos
 ---

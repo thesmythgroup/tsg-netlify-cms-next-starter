@@ -1,4 +1,4 @@
-# TSG Netlify CMS Starter
+# TSG Decap CMS Starter
 
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
@@ -21,16 +21,7 @@ yarn dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see
 the result.
 
-You can start editing the page by modifying `pages/index.js`. The page
-auto-updates as you edit the file.
-
-Run the CMS:
-
-```bash
-npm run cms
-```
-
-You can log into the CMS at <http://127.0.0.1:8080/admin>.
+You can log into the CMS at <http://localhost:3000/admin>.
 
 ## Deploy To Netlify
 
@@ -64,11 +55,11 @@ only these purposes:
 1. Import content from markdown files
 2. Import a component for display
 3. Feed content document attributes into the page component via props
-   (see `pages/index.tsx` and `components/pages/home.tsx` for an example)
+   (see `pages/index.tsx` for an example)
 
 For each new page we create, we then need to reference it in two places:
 
-1. Admin entry point in `public/admin/index.html` (see: <https://www.netlifycms.org/docs/customization/>)
+1. Admin entry point in `cms/cms.ts` (see: <https://decapcms.org/docs/customization/>)
 2. Front-end entry-point in `pages/page-name.tsx`
 
 ### Our Approach to Page Component Architecture
@@ -122,8 +113,6 @@ behavior of the `next/image` component imposes too many restrictions and problem
 (`next-image-optimized`)[https://github.com/cyrilwanner/next-optimized-images] instead.
 
 Simply use `<img src={'path/to/image'}` where images are needed.
-
-Examples:
 
 ### Developing On the Local CMS
 

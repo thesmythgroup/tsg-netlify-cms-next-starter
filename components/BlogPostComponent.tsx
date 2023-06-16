@@ -1,4 +1,6 @@
 import { BlogPost } from './page/BlogPageComponent';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 interface BlogPostComponentProps {
   post: BlogPost;
@@ -17,6 +19,9 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
     tagSlugs,
   },
 }) => {
+  const router = useRouter();
+  const { pathname, asPath, query, locale } = router;
+
   return (
     <div className={'text-left border'}>
       <div className={'h-72 w-auto'}>
@@ -31,7 +36,11 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
           })}
           |
           {categorySlug ? (
-            <a href={`/blog/categories/${categorySlug}`}>{category}</a>
+            <Link
+              href={`${locale ? locale : ''}/blog/categories/${categorySlug}`}
+            >
+              {category}
+            </Link>
           ) : (
             category
           )}
@@ -43,7 +52,7 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
             return (
               <span key={i} className={'mr-2 border rounded-lg px-2 py-0.5'}>
                 {tagSlug ? (
-                  <a href={`/blog/tags/${tagSlug}`}>#{tag}</a>
+                  <Link href={`tags/${tagSlug}`}>{`#${tag}`}</Link>
                 ) : (
                   `#${tag}`
                 )}
@@ -52,12 +61,12 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
           })}
         </div>
         <div className={'line-clamp-5 mb-4'}>{content}</div>
-        <a
-          href={`/blog/posts/${slug}`}
+        <Link
+          href={`posts/${slug}`}
           className={'rounded-lg py-1.5 px-3.5 bg-black text-white text-sm'}
         >
           Read More
-        </a>
+        </Link>
       </div>
     </div>
   );

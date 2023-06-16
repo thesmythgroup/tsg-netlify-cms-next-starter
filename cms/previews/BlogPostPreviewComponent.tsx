@@ -14,6 +14,9 @@ const BlogPostPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
     date: props.entry.getIn(['data', 'date']),
     image: props.entry.getIn(['data', 'image']),
     content: props.entry.getIn(['data', 'content']),
+    slug: props.entry.getIn(['data', 'slug']),
+    categorySlug: props.entry.getIn(['data', 'categorySlug']),
+    tagSlugs: props.entry.getIn(['data', 'tagSlugs']),
   };
   const isPage = props.entry.getIn(['data', 'showPage']);
 

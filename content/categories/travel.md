@@ -2,5 +2,5 @@
 en:
   name: Travel
 es:
-  name: Travel
+  name: Viajar
 ---

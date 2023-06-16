@@ -1,4 +1,5 @@
 import { CmsCollectionFile } from 'netlify-cms-core';
+import { LOCALES } from '../../lib/locale-settings';
 
 // This page serves to highlight the various widgets that are available as part of Netlify CMS.
 // Documentation can be found here: https://www.netlifycms.org/docs/widgets/
@@ -6,7 +7,10 @@ export const widgetShowcasePage: CmsCollectionFile = {
   label: 'Widget Showcase',
   name: 'widgetShowcasePage',
   file: 'content/widgetShowcase.md',
-  i18n: true,
+  i18n: {
+    structure: 'single_file',
+    locales: LOCALES,
+  },
   fields: [
     {
       label: 'Header Color',
@@ -169,6 +173,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
       widget: 'relation',
       collection: 'pages',
       file: 'home',
+      i18n: true,
       search_fields: ['features.*.title'],
       value_field: 'features.*.title',
       display_fields: ['features.*.title'],
@@ -179,6 +184,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
       label: 'Featured Location',
       name: 'featuredLocation',
       widget: 'relation',
+      i18n: true,
       collection: 'sales-offices',
       search_fields: ['address'],
       value_field: 'address',

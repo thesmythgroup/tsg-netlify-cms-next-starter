@@ -2,5 +2,5 @@
 en:
   name: Good Eats
 es:
-  name: Good Eats
+  name: Buena comida
 ---
