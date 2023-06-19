@@ -7,6 +7,10 @@ const strings: I18nString = {
   formLabelName: 'Nombre',
   formLabelMessage: 'Mensaje',
   footerMessageAllRightsReserved: 'Todos los derechos reservados.',
+  widgetLabelAge: 'Edad',
+  widgetLabelNearestAirport: 'Aeropuerto más cercano',
+  widgetLabelAppointmentDate: 'Tu cita es el',
+  widgetLinkAViewPickupLocation: 'Ver ubicación de recogida',
 };
 
 export default strings;

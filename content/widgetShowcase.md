@@ -23,6 +23,7 @@ en:
       function() {
         // this is my attempt at fizzBuzz
       }
+  title: Decap Widget Showcase
 es:
   color: "#7aa2b9"
   profile:
@@ -30,7 +31,7 @@ es:
       - UX
       - Dev
       - Marketing
-    bio: hello, this is my bio.
+    bio: Hola, esta es mi biografía.
     airportCode: LHR
     public: true
     name: Chris
@@ -45,6 +46,7 @@ es:
   code:
     code: |-
       function() {
-        // this is my attempt at fizzBuzz
+        // Esta es mi versión de FizzBuzz
       }
+  title: Vitrina de widgets Decap
 ---

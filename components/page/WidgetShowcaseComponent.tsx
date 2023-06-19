@@ -1,3 +1,6 @@
+import { useRouter } from 'next/router';
+import { i18nString } from '../../lib/i18n';
+
 interface ProfileProps {
   profilePicture: string;
   name: string;
@@ -26,6 +29,7 @@ interface LocationProps {
 }
 
 export interface WidgetShowcaseComponentProps {
+  title: string;
   color?: string;
   profile?: ProfileProps;
   appointmentTime?: string;
@@ -36,6 +40,8 @@ export interface WidgetShowcaseComponentProps {
 const WidgetShowcaseComponent: React.FC<WidgetShowcaseComponentProps> = (
   props,
 ) => {
+  const router = useRouter();
+  const locale = router?.locale;
   const { color, profile, appointmentTime, location, code } = props;
   const googleUrl = location?.coordinates
     ? `https://www.google.com/maps/search/?api=1&query=${location.coordinates[1]},${location.coordinates[0]}`
@@ -47,7 +53,7 @@ const WidgetShowcaseComponent: React.FC<WidgetShowcaseComponentProps> = (
         className='p-3 w-full'
         style={{ backgroundColor: color ?? 'lavender' }}
       >
-        <h2 className='text-3xl font-bold'>Widget Showcase</h2>
+        <h1 className='text-3xl font-bold'>{props.title}</h1>
       </div>
 
       {/* PROFILE BLOCK */}
@@ -72,7 +78,8 @@ const WidgetShowcaseComponent: React.FC<WidgetShowcaseComponentProps> = (
             </span>
             <br />
             <span className='text-gray-600 text-sm'>
-              Age: {profile?.age ?? 'unknown'}
+              {i18nString(locale, 'widgetLabelAge')}:{' '}
+              {profile?.age ?? 'unknown'}
             </span>
 
             {/* ROLES */}
@@ -99,21 +106,29 @@ const WidgetShowcaseComponent: React.FC<WidgetShowcaseComponentProps> = (
         )}
 
         {profile?.airportCode && (
-          <p className='mt-3 mx-5'>Nearest airport: {profile.airportCode}</p>
+          <p className='mt-3 mx-5'>
+            {i18nString(locale, 'widgetLabelNearestAirport')}:{' '}
+            {profile.airportCode}
+          </p>
         )}
 
         {appointmentTime && (
           <p className='mt-3 mx-5'>
-            Your appointment is on: {appointmentTime ?? 'Not yet scheduled'}
+            {i18nString(locale, 'widgetLabelAppointmentDate')}:{' '}
+            {appointmentTime ?? 'Not yet scheduled'}
           </p>
         )}
 
         {profile?.address && (
           <p className='mt-3 mx-5'>
-            {profile?.address.street && <div>{profile?.address.street}</div>}
-            {profile?.address.city && <div>{profile?.address.city}</div>}
+            {profile?.address.street && (
+              <span className={'block'}>{profile?.address.street}</span>
+            )}
+            {profile?.address.city && (
+              <span className={'block'}>{profile?.address.city}</span>
+            )}
             {profile?.address['zip-code'] && (
-              <div>{profile?.address['zip-code']}</div>
+              <span className={'block'}>{profile?.address['zip-code']}</span>
             )}
           </p>
         )}
@@ -121,7 +136,7 @@ const WidgetShowcaseComponent: React.FC<WidgetShowcaseComponentProps> = (
         {googleUrl && (
           <div className='my-3'>
             <a className='underline my-2 ml-5' href={googleUrl}>
-              View Pick-Up Location
+              {i18nString(locale, 'widgetLinkAViewPickupLocation')}
             </a>
           </div>
         )}

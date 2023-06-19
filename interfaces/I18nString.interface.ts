@@ -5,4 +5,8 @@ export interface I18nString {
   formLabelSubject: string;
   formLabelMessage: string;
   footerMessageAllRightsReserved: string;
+  widgetLabelAge: string;
+  widgetLabelNearestAirport: string;
+  widgetLabelAppointmentDate: string;
+  widgetLinkAViewPickupLocation: string;
 }

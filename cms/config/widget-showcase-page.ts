@@ -13,6 +13,12 @@ export const widgetShowcasePage: CmsCollectionFile = {
   },
   fields: [
     {
+      label: 'Title',
+      name: 'title',
+      widget: 'string',
+      i18n: true,
+    },
+    {
       label: 'Header Color',
       name: 'color',
       widget: 'color',
@@ -123,6 +129,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
           name: 'airportCode',
           required: false,
           widget: 'select',
+          i18n: true,
           options: [
             { label: 'New York', value: 'JFK' },
             { label: 'London', value: 'LHR' },
@@ -177,6 +184,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
       search_fields: ['features.*.title'],
       value_field: 'features.*.title',
       display_fields: ['features.*.title'],
+      required: false,
     },
 
     // Referencing a folder collection field example
@@ -189,6 +197,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
       search_fields: ['address'],
       value_field: 'address',
       display_fields: ['{{title}} ({{address}})'],
+      required: false,
     },
   ],
 };

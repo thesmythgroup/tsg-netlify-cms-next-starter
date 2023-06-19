@@ -7,10 +7,11 @@ import { LocalizedMarkdownContentInterface } from '../interfaces/LocalizedMarkdo
 export const WidgetShowcasePage: React.FC<WidgetShowcaseComponentProps> = (
   props,
 ) => {
-  const { color, profile, appointmentTime, location, code } = props;
+  const { title, color, profile, appointmentTime, location, code } = props;
 
   return (
     <WidgetShowcaseComponent
+      title={title}
       code={code}
       color={color}
       appointmentTime={appointmentTime}
@@ -40,6 +41,7 @@ export function getStaticProps({
       appointmentTime: metadataFromFile.appointmentTime ?? null,
       location: metadataFromFile.location,
       profile: metadataFromFile.profile,
+      title: metadataFromFile.title,
     },
   };
 }
