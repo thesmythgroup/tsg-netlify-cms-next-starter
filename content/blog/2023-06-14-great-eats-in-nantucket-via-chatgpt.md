@@ -1,7 +1,6 @@
 ---
 en:
   date: 2023-06-14T19:35:45.105Z
-  showPage: false
   category: Food
   title: Great Eats In Nantucket (via ChatGPT)
   tags:
@@ -32,7 +31,6 @@ en:
     Nantucket's culinary scene is a treasure trove of delectable delights, and these popular establishments are just the tip of the iceberg. From elegant waterfront restaurants to charming brunch spots, the island offers a diverse array of dining experiences to suit all tastes. Whether you're a seafood aficionado, a lover of farm-to-table cuisine, or seeking a cozy breakfast nook, Nantucket promises to delight your senses and leave you with lasting culinary memories. Embark on a gastronomic adventure and explore these popular places to eat in Nantucket.
 es:
   date: 2023-06-14T19:35:45.105Z
-  showPage: false
   category: Comida
   title: Grandes Delicias en Nantucket (a través de ChatGPT)
   tags:

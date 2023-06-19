@@ -22,9 +22,9 @@ const HeaderComponent: React.FC = () => {
           src={'/assets/images/tsg_icon_large.png'}
           alt={'The Smyth Group logo'}
         />
-        <a href='/' className={'px-8 text-3xl font-bold'}>
-          The Smyth Group
-        </a>
+        <Link href='/'>
+          <a className={'px-8 text-3xl font-bold'}>The Smyth Group</a>
+        </Link>
       </div>
 
       {/* Desktop Menu */}

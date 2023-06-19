@@ -1,6 +1,7 @@
 import { BlogPost } from './page/BlogPageComponent';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { i18nString } from '../lib/i18n';
 
 interface BlogPostComponentProps {
   post: BlogPost;
@@ -20,7 +21,7 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
   },
 }) => {
   const router = useRouter();
-  const { pathname, asPath, query, locale } = router;
+  const locale = router?.locale;
 
   return (
     <div className={'text-left border'}>
@@ -35,10 +36,8 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
             year: 'numeric',
           })}
           |
-          {categorySlug ? (
-            <Link
-              href={`${locale ? locale : ''}/blog/categories/${categorySlug}`}
-            >
+          {categorySlug && locale ? (
+            <Link href={`/blog/categories/${categorySlug}`} locale={locale}>
               {category}
             </Link>
           ) : (
@@ -52,7 +51,7 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
             return (
               <span key={i} className={'mr-2 border rounded-lg px-2 py-0.5'}>
                 {tagSlug ? (
-                  <Link href={`tags/${tagSlug}`}>{`#${tag}`}</Link>
+                  <Link href={`/blog/tags/${tagSlug}`}>{`#${tag}`}</Link>
                 ) : (
                   `#${tag}`
                 )}
@@ -61,12 +60,14 @@ const BlogPostComponent: React.FC<BlogPostComponentProps> = ({
           })}
         </div>
         <div className={'line-clamp-5 mb-4'}>{content}</div>
-        <Link
-          href={`posts/${slug}`}
-          className={'rounded-lg py-1.5 px-3.5 bg-black text-white text-sm'}
-        >
-          Read More
-        </Link>
+        {slug && locale ? (
+          <Link
+            href={`/blog/posts/${slug}`}
+            className={'rounded-lg py-1.5 px-3.5 bg-black text-white text-sm'}
+          >
+            {i18nString(locale, 'readMoreLabel')}
+          </Link>
+        ) : null}
       </div>
     </div>
   );

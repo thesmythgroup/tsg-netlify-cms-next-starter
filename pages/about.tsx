@@ -6,7 +6,7 @@ import CollectionService from '../lib/CollectionService';
 import { LocalizedMarkdownContentInterface } from '../interfaces/LocalizedMarkdownContent.interface';
 
 export const AboutPage: React.FC<AboutPageComponentProps> = (props) => {
-  return <AboutPageComponent content={props.content} />;
+  return <AboutPageComponent title={props.title} content={props.content} />;
 };
 
 export default AboutPage;
@@ -22,6 +22,7 @@ export function getStaticProps({
   return {
     props: {
       content: aboutMetadata.content,
+      title: aboutMetadata.title,
     },
   };
 }

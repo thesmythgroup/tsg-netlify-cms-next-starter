@@ -1,5 +1,7 @@
 import RelatedBlogPostsComponent from '../RelatedBlogPostsComponent';
 import { BlogPost } from './BlogPageComponent';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 export interface BlogPostPageProps {
   post: BlogPost;
@@ -10,6 +12,9 @@ const BlogPostPageComponent: React.FC<BlogPostPageProps> = ({
   post: { date, categorySlug, category, title, image, content, tags, tagSlugs },
   relatedPosts,
 }) => {
+  const router = useRouter();
+  const locale = router?.locale;
+
   return (
     <>
       <div
@@ -23,13 +28,15 @@ const BlogPostPageComponent: React.FC<BlogPostPageProps> = ({
               year: 'numeric',
             })}
             |
-            {categorySlug ? (
-              <a href={`/blog/categories/${categorySlug}`}>{category}</a>
+            {categorySlug && locale ? (
+              <Link href={`/blog/categories/${categorySlug}`} locale={locale}>
+                {category}
+              </Link>
             ) : (
               category
             )}
           </div>
-          <h2 className={'text-4xl my-2'}>{title}</h2>
+          <h1 className={'text-4xl my-2'}>{title}</h1>
           <div className={'w-auto h-[25rem]'}>
             <img className={'object-cover w-full h-full rounded'} src={image} />
           </div>
@@ -39,8 +46,14 @@ const BlogPostPageComponent: React.FC<BlogPostPageProps> = ({
               const tagSlug = tagSlugs?.[i];
               return (
                 <span key={i} className={'mr-2 border rounded-lg px-2 py-0.5'}>
-                  {tagSlug ? (
-                    <a href={`/blog/tags/${tagSlug}`}>#{tag}</a>
+                  {tagSlug && locale ? (
+                    <Link
+                      passHref={true}
+                      href={`/blog/tags/${tagSlug}`}
+                      locale={locale}
+                    >
+                      <a>#{tag}</a>
+                    </Link>
                   ) : (
                     `#${tag}`
                   )}

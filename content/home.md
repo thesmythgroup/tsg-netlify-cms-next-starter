@@ -25,15 +25,22 @@ en:
     - image: /uploads/cleanshot-2022-05-24-at-17.14.51-2x.png
     - image: /uploads/cleanshot-2022-05-24-at-17.15.01-2x.png
 es:
-  title: TSG Netlify CMS Kit de Iniciación!
-  intro: Netlify CMS es una excelente opción para permitir la edición de contenido web sin necesidad de conocimientos técnicos.
+  title: TSG Netlify CMS Kit de Iniciación
+  intro: Netlify CMS es una excelente opción para permitir la edición de contenido
+    web sin necesidad de conocimientos técnicos.
   embeddedVideo: https://www.youtube.com/embed/SCCffOscgoc
   features:
     - title: Fácil de editar
-      content: Los usuarios pueden iniciar sesión en un panel de administración intuitivo, cargar imágenes, modificar contenido y reorganizarlo a su gusto.
+      content: Los usuarios pueden iniciar sesión en un panel de administración
+        intuitivo, cargar imágenes, modificar contenido y reorganizarlo a su
+        gusto.
     - title: Baja huella de seguridad
-      content: Generación estática significa que hay pocos componentes en movimiento. Esto significa que existe un riesgo mínimo de que actores malintencionados secuestren el sitio web publicado.
+      content: Generación estática significa que hay pocos componentes en movimiento.
+        Esto significa que existe un riesgo mínimo de que actores
+        malintencionados secuestren el sitio web publicado.
     - title: Los desarrolladores lo adoran
-      content: Netlify CMS es fácil de desarrollar y simple de mantener, lo que significa más tiempo para construir características adicionales y mejoras.
+      content: Netlify CMS es fácil de desarrollar y simple de mantener, lo que
+        significa más tiempo para construir características adicionales y
+        mejoras.
   showGallery: true
 ---

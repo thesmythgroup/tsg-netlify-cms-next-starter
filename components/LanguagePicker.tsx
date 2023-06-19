@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { LOCALES } from '../lib/locale-settings';
 import { useRouter } from 'next/router';
 
-export interface LanguagePickerProps {
-  locale: string;
-}
-
-export default function LanguagePicker({ locale }: LanguagePickerProps) {
+export default function LanguagePicker() {
   const router = useRouter();
-  const { pathname, asPath, query } = router;
+  const { pathname, asPath, query, locale } = router;
   const [isOpen, setIsOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState<number | null>(null);
 
@@ -41,6 +37,16 @@ export default function LanguagePicker({ locale }: LanguagePickerProps) {
       window.removeEventListener('keydown', handleKeyDown);
     };
   });
+
+  useMemo(() => {
+    const matchedLocale = navigationItems.findIndex(
+      (item) => item.linkName === locale,
+    );
+
+    if (currentItem == null && matchedLocale > -1) {
+      setCurrentItem(matchedLocale);
+    }
+  }, [currentItem, locale]);
 
   const handleKeyDown = async (e) => {
     if (isOpen) {

@@ -5,6 +5,8 @@ import CollectionService from '../../../lib/CollectionService';
 import { BlogPostResolver } from '../../../lib/BlogPostResolver';
 import { resolveLocalizedPaths } from '../../../lib/resolve-localized-paths';
 import { LocalizedMarkdownContentInterface } from '../../../interfaces/LocalizedMarkdownContent.interface';
+import AllPostsLink from '../../../components/AllPostsLink';
+import { useRouter } from 'next/router';
 
 interface BlogTagPageProps {
   posts: BlogPost[];
@@ -12,10 +14,15 @@ interface BlogTagPageProps {
 }
 
 export const TagBlogPage: React.FC<BlogTagPageProps> = ({ posts, tag }) => {
+  const router = useRouter();
+  const locale = router?.locale;
+
   return (
     <>
       <h1 className={'text-3xl mb-8'}>
-        <a href='/blog/1'>All Posts</a> / <strong>#{tag}</strong>
+        <AllPostsLink url={'/blog/1'} locale={locale}>
+          #{tag}
+        </AllPostsLink>
       </h1>
       <div className={'grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3'}>
         {posts.map((post, i) => {

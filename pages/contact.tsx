@@ -6,7 +6,7 @@ import CollectionService from '../lib/CollectionService';
 import { LocalizedMarkdownContentInterface } from '../interfaces/LocalizedMarkdownContent.interface';
 
 export const AboutPage: React.FC<ContactPageComponentProps> = (props) => {
-  return <ContactPageComponent intro={props.intro} />;
+  return <ContactPageComponent title={props.title} intro={props.intro} />;
 };
 
 export default AboutPage;
@@ -22,6 +22,7 @@ export function getStaticProps({
   return {
     props: {
       intro: contactMetadata.intro,
+      title: contactMetadata.title,
     },
   };
 }

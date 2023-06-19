@@ -1,6 +1,5 @@
 ---
 en:
-  showPage: false
   date: 2023-06-15T18:29:12.981Z
   category: Technology 101
   title: What Is a Computer?
@@ -33,7 +32,6 @@ en:
   tags:
     - Fun
 es:
-  showPage: false
   date: 2023-06-15T18:32:45.308Z
   category: Tecnología 101
   title: ¿Qué es una computadora?

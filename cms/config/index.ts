@@ -152,6 +152,12 @@ export const cmsConfig: CustomCmsConfig = {
           i18n: true,
           fields: [
             {
+              label: 'Title',
+              name: 'title',
+              widget: 'string',
+              i18n: true,
+            },
+            {
               label: 'Content',
               name: 'content',
               widget: 'markdown',
@@ -166,6 +172,12 @@ export const cmsConfig: CustomCmsConfig = {
           file: 'content/contact.md',
           i18n: true,
           fields: [
+            {
+              label: 'Title',
+              name: 'title',
+              widget: 'string',
+              i18n: true,
+            },
             {
               label: 'Intro',
               name: 'intro',
@@ -205,13 +217,6 @@ export const cmsConfig: CustomCmsConfig = {
         locales: LOCALES,
       },
       fields: [
-        {
-          label: 'Preview as page?',
-          name: 'showPage',
-          widget: 'boolean',
-          default: false,
-          i18n: true,
-        },
         {
           label: 'Category',
           name: 'category',

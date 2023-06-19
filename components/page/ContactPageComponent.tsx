@@ -1,22 +1,38 @@
+import { i18nString } from '../../lib/i18n';
+import { useRouter } from 'next/router';
+
 export interface ContactPageComponentProps {
+  title: string;
   intro: string;
 }
 
 const ContactPageComponent: React.FC<ContactPageComponentProps> = (props) => {
+  const router = useRouter();
+  const locale = router?.locale;
+
   return (
-    <>
-      <h2>Contact</h2>
-      <div>{props.intro}</div>
+    <div className={'prose'}>
+      <h1>{props.title}</h1>
 
-      <div>Name:</div>
-      <input type='text' />
+      <p>{props.intro}</p>
 
-      <div>Subject:</div>
-      <input type='text' />
+      <form>
+        <label className={'block'} htmlFor={'name'}>
+          {i18nString(locale, 'formLabelName')}:
+        </label>
+        <input id='name' type='text' />
 
-      <div>Message:</div>
-      <input type='text' />
-    </>
+        <label className={'block'} htmlFor={'subject'}>
+          {i18nString(locale, 'formLabelSubject')}:
+        </label>
+        <input id='subject' type='text' />
+
+        <label className={'block'} htmlFor={'message'}>
+          {i18nString(locale, 'formLabelMessage')}:
+        </label>
+        <input id='message' type='text' />
+      </form>
+    </div>
   );
 };
 export default ContactPageComponent;

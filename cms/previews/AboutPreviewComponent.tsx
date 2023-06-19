@@ -5,11 +5,12 @@ import AboutPageComponent from '../../components/page/AboutPageComponent';
 const AboutPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
   props,
 ) => {
+  const title = props.entry.getIn(['data', 'title']);
   const content = props.entry.getIn(['data', 'content']);
 
   return (
     <div className={'p-5'}>
-      <AboutPageComponent content={content} />
+      <AboutPageComponent title={title} content={content} />
     </div>
   );
 };

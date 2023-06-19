@@ -24,7 +24,7 @@
 *.pem
 
 # netlify CMS admin
-public/admin/assets/*
+public/admin/assets
 
 # debug
 npm-debug.log*

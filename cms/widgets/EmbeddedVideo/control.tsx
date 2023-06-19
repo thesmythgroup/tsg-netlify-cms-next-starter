@@ -10,9 +10,8 @@ const control: React.FC<CmsWidgetControlProps> = (props) => {
     <input
       type='text'
       onChange={(e) => handleChange(e)}
-      value={props.value ?? 'https://www.youtube.com/embed/SCCffOscgoc'}
+      value={props.value ?? ''}
       id={props.forID}
-      placeholder='https://www.youtube.com/embed/SCCffOscgoc'
       className={props.classNameWrapper}
     />
   );
