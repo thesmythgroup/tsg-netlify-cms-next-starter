@@ -6,8 +6,8 @@ const FooterComponent: React.FC = () => {
   const locale = router?.locale;
 
   return (
-    <div className={'pt-20'}>
-      <div>
+    <div className={'py-20'}>
+      <div className={'text-center'}>
         <p>&copy; {new Date().getFullYear()} The Jamie Smyth Group, LLC</p>
         <p>{i18nString(locale, 'footerMessageAllRightsReserved')}</p>
       </div>

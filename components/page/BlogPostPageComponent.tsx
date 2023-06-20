@@ -2,6 +2,7 @@ import RelatedBlogPostsComponent from '../RelatedBlogPostsComponent';
 import { BlogPost } from './BlogPageComponent';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
 
 export interface BlogPostPageProps {
   post: BlogPost;
@@ -40,7 +41,14 @@ const BlogPostPageComponent: React.FC<BlogPostPageProps> = ({
           <div className={'w-auto h-[25rem]'}>
             <img className={'object-cover w-full h-full rounded'} src={image} />
           </div>
-          <div className={'p-2'}>{content}</div>
+          <div className={'p-2'}>
+            <ReactMarkdown
+              children={content}
+              components={{
+                p: ({ node, ...props }) => <p className={'pb-5'} {...props} />,
+              }}
+            />
+          </div>
           <div className={'text-xs py-1'}>
             {tags?.map((tag, i) => {
               const tagSlug = tagSlugs?.[i];

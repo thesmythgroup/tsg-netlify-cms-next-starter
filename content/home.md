@@ -24,6 +24,9 @@ en:
     - image: /uploads/cleanshot-2022-05-24-at-17.14.31-2x.png
     - image: /uploads/cleanshot-2022-05-24-at-17.14.51-2x.png
     - image: /uploads/cleanshot-2022-05-24-at-17.15.01-2x.png
+  secondaryHeading: Arrange Content To Your Liking
+  secondaryContent: Provide rich experiences and accurate information, all with
+    drag 'n drop, and cut n' paste.
 es:
   title: TSG Netlify CMS Kit de Iniciación
   intro: Netlify CMS es una excelente opción para permitir la edición de contenido
@@ -43,4 +46,7 @@ es:
         significa más tiempo para construir características adicionales y
         mejoras.
   showGallery: true
+  secondaryHeading: Organiza el contenido a tu gusto
+  secondaryContent: Proporciona experiencias enriquecedoras e información precisa,
+    todo ello mediante arrastrar y soltar, y copiar y pegar.
 ---

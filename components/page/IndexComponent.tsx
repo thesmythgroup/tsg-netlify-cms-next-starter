@@ -13,6 +13,8 @@ export interface IndexGalleryImage {
 export interface IndexComponentProps {
   title: string;
   intro: string;
+  secondaryHeading: string;
+  secondaryContent: string;
   features: IndexFeature[];
   embeddedVideo: string;
   showGallery: boolean;
@@ -22,6 +24,8 @@ export interface IndexComponentProps {
 const IndexPageComponent: React.FC<IndexComponentProps> = ({
   title,
   intro,
+  secondaryHeading,
+  secondaryContent,
   features,
   embeddedVideo,
   showGallery,
@@ -44,10 +48,10 @@ const IndexPageComponent: React.FC<IndexComponentProps> = ({
         })}
       </div>
       <div>
-        <h2 className={'text-2xl mb-8'}>Arrange Content To Your Liking</h2>
-        <p className={'mb-8'}>
-          Provide rich experiences and accurate information.
-        </p>
+        <h2 className={'text-2xl mb-8'}>{secondaryHeading}</h2>
+        <div className={'mb-8'}>
+          <ReactMarkdown children={secondaryContent} />
+        </div>
       </div>
 
       {embeddedVideo ? (

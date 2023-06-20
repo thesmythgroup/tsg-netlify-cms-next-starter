@@ -3,9 +3,7 @@ import { BlogPost } from '../../../components/page/BlogPageComponent';
 import BlogPostComponent from '../../../components/BlogPostComponent';
 import { BlogPostResolver } from '../../../lib/BlogPostResolver';
 import { resolveLocalizedPaths } from '../../../lib/resolve-localized-paths';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { i18nString } from '../../../lib/i18n';
 import AllPostsLink from '../../../components/AllPostsLink';
 
 interface BlogCategoryPageProps {
@@ -55,8 +53,6 @@ export async function getStaticProps({
 
 export async function getStaticPaths() {
   const paths = await resolveLocalizedPaths('categories');
-
-  console.log('paths', paths);
 
   return {
     paths: paths.map((path) => {

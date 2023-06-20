@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { LOCALES } from '../lib/locale-settings';
 import { useRouter } from 'next/router';
 
@@ -19,7 +19,10 @@ export default function LanguagePicker() {
       return i === item;
     });
 
-    if (item !== currentItem) {
+    console.log('relatedItem', relatedItem);
+    console.log('currentItem', currentItem);
+
+    if (relatedItem !== currentItem) {
       setCurrentItem(relatedItem);
 
       await router.push({ pathname, query }, asPath, {
@@ -38,12 +41,16 @@ export default function LanguagePicker() {
     };
   });
 
-  useMemo(() => {
+  useEffect(() => {
+    if (currentItem != null) {
+      return;
+    }
+
     const matchedLocale = navigationItems.findIndex(
       (item) => item.linkName === locale,
     );
 
-    if (currentItem == null && matchedLocale > -1) {
+    if (matchedLocale > -1) {
       setCurrentItem(matchedLocale);
     }
   }, [currentItem, locale]);
@@ -84,7 +91,7 @@ export default function LanguagePicker() {
     <>
       <div className='relative inline-flex' id='dropdown'>
         <button
-          className='inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded bg-gray-500 px-5 text-sm font-medium tracking-wide text-white transition duration-300 hover:bg-gray-600 focus:bg-gray-700 focus-visible:outline-none disabled:cursor-not-allowed disabled:border-gray-300 disabled:bg-gray-300 disabled:shadow-none'
+          className='inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-1 border-slate-600 bg-white-500 px-5 text-sm font-medium tracking-wide text-black transition duration-300 hover:text-white hover:bg-slate-600  disabled:cursor-not-allowed disabled:border-gray-300 disabled:bg-gray-300 disabled:shadow-none'
           onClick={() => setIsOpen(!isOpen)}
           aria-expanded={isOpen}
         >
@@ -127,7 +134,7 @@ export default function LanguagePicker() {
                     index === currentItem
                       ? 'bg-gray-50 text-gray-500'
                       : 'bg-none text-slate-500'
-                  } flex w-full items-start justify-start gap-2 p-2 px-5 transition-colors duration-300 hover:bg-gray-50 hover:text-gray-500 focus:bg-gray-50 focus:text-gray-600 focus:outline-none focus-visible:outline-none`}
+                  } flex w-full items-start justify-start gap-2 p-2 px-5 transition-colors duration-300 hover:bg-gray-50 hover:text-gray-500 focus:bg-gray-50 focus:text-gray-600`}
                   aria-current={index + 1 === currentItem ? 'page' : 'false'}
                   onClick={() => onSetCurrentItem(index)}
                 >

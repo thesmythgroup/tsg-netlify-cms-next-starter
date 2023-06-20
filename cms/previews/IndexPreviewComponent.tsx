@@ -18,6 +18,9 @@ const IndexPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
    */
   const features = props.entry.getIn(['data', 'features'])?.toJS();
 
+  const secondaryHeading = props.entry.getIn(['data', 'secondaryHeading']);
+  const secondaryContent = props.entry.getIn(['data', 'secondaryContent']);
+
   const embeddedVideo = props.entry.getIn(['data', 'embeddedVideo']);
   const showGallery = props.entry.getIn(['data', 'showGallery']);
   const gallery = props.entry.getIn(['data', 'gallery'])?.toJS();
@@ -28,6 +31,8 @@ const IndexPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
       <IndexComponent
         title={title}
         intro={intro}
+        secondaryContent={secondaryContent}
+        secondaryHeading={secondaryHeading}
         embeddedVideo={embeddedVideo}
         showGallery={showGallery}
         features={features}

@@ -93,12 +93,6 @@ export const cmsConfig: CustomCmsConfig = {
               i18n: true,
             },
             {
-              label: 'Video',
-              name: 'embeddedVideo',
-              widget: 'embeddedVideo',
-              i18n: true,
-            },
-            {
               label: 'Features',
               name: 'features',
               widget: 'list',
@@ -113,6 +107,24 @@ export const cmsConfig: CustomCmsConfig = {
                   modes: ['rich_text', 'raw'],
                 },
               ],
+            },
+            {
+              label: 'Secondary Heading',
+              name: 'secondaryHeading',
+              widget: 'string',
+              i18n: true,
+            },
+            {
+              label: 'Secondary Content',
+              name: 'secondaryContent',
+              widget: 'markdown',
+              i18n: true,
+            },
+            {
+              label: 'Video',
+              name: 'embeddedVideo',
+              widget: 'embeddedVideo',
+              i18n: true,
             },
             {
               label: 'Gallery Images',

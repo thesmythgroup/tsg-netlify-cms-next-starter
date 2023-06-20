@@ -9,6 +9,8 @@ const IndexPage: React.FC<IndexComponentProps> = ({
   title,
   intro,
   features,
+  secondaryHeading,
+  secondaryContent,
   embeddedVideo,
   showGallery,
   gallery,
@@ -18,6 +20,8 @@ const IndexPage: React.FC<IndexComponentProps> = ({
       <IndexComponent
         title={title}
         intro={intro}
+        secondaryHeading={secondaryHeading}
+        secondaryContent={secondaryContent}
         showGallery={showGallery}
         embeddedVideo={embeddedVideo}
         features={features}
@@ -45,6 +49,8 @@ export function getStaticProps({
       title: metadataFromFile.title,
       intro: metadataFromFile.intro,
       features: metadataFromFile.features,
+      secondaryContent: metadataFromFile.secondaryContent,
+      secondaryHeading: metadataFromFile.secondaryHeading,
       embeddedVideo: metadataFromFile.embeddedVideo,
       showGallery: metadataFromFile.showGallery,
       gallery: metadataFromFile.gallery ?? [],
