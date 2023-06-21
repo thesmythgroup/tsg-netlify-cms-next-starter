@@ -1,12 +1,13 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import { LOCALES } from '../lib/locale-settings';
 import { useRouter } from 'next/router';
 
 export default function LanguagePicker() {
   const router = useRouter();
-  const { pathname, asPath, query, locale } = router;
+  const { asPath, query, locale, route } = router;
   const [isOpen, setIsOpen] = useState(false);
   const [currentItem, setCurrentItem] = useState<number | null>(null);
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
 
   const navigationItems = LOCALES.map((supportedLocale) => {
     return {
@@ -14,24 +15,24 @@ export default function LanguagePicker() {
     };
   });
 
-  const onSetCurrentItem = useCallback(async (item: number) => {
-    const relatedItem = navigationItems.findIndex((linkItem, i) => {
-      return i === item;
-    });
-
-    console.log('relatedItem', relatedItem);
-    console.log('currentItem', currentItem);
-
-    if (relatedItem !== currentItem) {
-      setCurrentItem(relatedItem);
-
-      await router.push({ pathname, query }, asPath, {
-        locale: navigationItems[relatedItem].linkName,
+  const onSetCurrentItem = useCallback(
+    async (item: number) => {
+      const relatedItem = navigationItems.findIndex((linkItem, i) => {
+        return i === item;
       });
 
-      setIsOpen(false);
-    }
-  }, []);
+      if (relatedItem > -1) {
+        setCurrentItem(relatedItem);
+
+        await router.push({ pathname: route, query }, asPath, {
+          locale: navigationItems[relatedItem].linkName,
+        });
+
+        setIsOpen(false);
+      }
+    },
+    [router],
+  );
 
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
@@ -42,6 +43,24 @@ export default function LanguagePicker() {
   });
 
   useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        wrapperRef.current &&
+        !wrapperRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [wrapperRef]);
+
+  // handle setting the default locale
+  useEffect(() => {
     if (currentItem != null) {
       return;
     }
@@ -51,7 +70,7 @@ export default function LanguagePicker() {
     );
 
     if (matchedLocale > -1) {
-      setCurrentItem(matchedLocale);
+      onSetCurrentItem(matchedLocale).catch();
     }
   }, [currentItem, locale]);
 
@@ -89,7 +108,7 @@ export default function LanguagePicker() {
 
   return (
     <>
-      <div className='relative inline-flex' id='dropdown'>
+      <div className='relative inline-flex' id='dropdown' ref={wrapperRef}>
         <button
           className='inline-flex h-10 items-center justify-center gap-2 whitespace-nowrap rounded border border-1 border-slate-600 bg-white-500 px-5 text-sm font-medium tracking-wide text-black transition duration-300 hover:text-white hover:bg-slate-600  disabled:cursor-not-allowed disabled:border-gray-300 disabled:bg-gray-300 disabled:shadow-none'
           onClick={() => setIsOpen(!isOpen)}
