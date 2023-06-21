@@ -36,7 +36,7 @@ const IndexPageComponent: React.FC<IndexComponentProps> = ({
       <h1 className={'text-2xl mb-8'}>{title}</h1>
       <div className={'mb-8'}>{intro}</div>
       <div className={'md:grid grid-cols-3 mb-8 gap-4'}>
-        {features?.map((feature, i) => {
+        {features.map((feature, i) => {
           return (
             <div key={i}>
               <h2 className={'text-xl mb-4'}>{feature.title}</h2>

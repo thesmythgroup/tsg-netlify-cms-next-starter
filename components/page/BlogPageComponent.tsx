@@ -41,16 +41,18 @@ const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
         })}
       </div>
       <div className={'flex justify-center mt-20'}>
-        <Link href={`${pagination.current - 1}`}>
-          <a className={`mr-4 ${pagination.current === 1 && 'invisible'}`}>
-            &larr;
-          </a>
+        <Link
+          href={`${pagination.current - 1}`}
+          className={`mr-4 ${pagination.current === 1 && 'invisible'}`}
+        >
+          &larr;
         </Link>
         {`${pagination.current} of ${pagination.total}`}
-        <Link href={`${pagination.current + 1}`}>
-          <a className={`mr-4 ${pagination.current === 1 && 'invisible'}`}>
-            &rarr;
-          </a>
+        <Link
+          href={`${pagination.current + 1}`}
+          className={`mr-4 ${pagination.current === 1 && 'invisible'}`}
+        >
+          &rarr;
         </Link>
       </div>
     </div>
