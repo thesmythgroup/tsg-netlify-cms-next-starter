@@ -6,3 +6,4 @@ build
 coverage
 out
 content
+public/admin/assets

@@ -1,3 +1,6 @@
 ---
-name: Summer
+en:
+  name: Summer
+es:
+  name: Summer
 ---

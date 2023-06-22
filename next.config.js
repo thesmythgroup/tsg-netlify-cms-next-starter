@@ -1,10 +1,26 @@
 const path = require('path'); // eslint-disable-line @typescript-eslint/no-var-requires
-const withOptimizedImages = require('next-optimized-images'); // eslint-disable-line @typescript-eslint/no-var-requires
+const withOptimizedImages = require('next-optimized-images');
+const { LOCALES, DEFAULT_LOCALE } = require('./lib/locale-settings'); // eslint-disable-line @typescript-eslint/no-var-requires
 
 const config = withOptimizedImages({
   inlineImageLimit: -1,
   handleImages: ['jpeg', 'png', 'webp', 'gif'],
   trailingSlash: true,
+  i18n: {
+    // should also match locales in cms/config.index
+    locales: LOCALES,
+    defaultLocale: DEFAULT_LOCALE,
+  },
+  async rewrites() {
+    return {
+      beforeFiles: [
+        {
+          source: '/admin',
+          destination: '/admin/index.html',
+        },
+      ],
+    };
+  },
   webpack: (cfg) => {
     cfg.module.rules.push({
       test: /\.md$/,

@@ -1,8 +1,10 @@
 import { GetStaticPropsResult } from 'next';
 import { BlogPost } from '../../../components/page/BlogPageComponent';
-import { getBlogPostsByCategory } from '../../../lib/blog-posts';
 import BlogPostComponent from '../../../components/BlogPostComponent';
-import fs from 'fs';
+import { BlogPostResolver } from '../../../lib/BlogPostResolver';
+import { resolveLocalizedPaths } from '../../../lib/resolve-localized-paths';
+import { useRouter } from 'next/router';
+import AllPostsLink from '../../../components/AllPostsLink';
 
 interface BlogCategoryPageProps {
   posts: BlogPost[];
@@ -11,10 +13,15 @@ interface BlogCategoryPageProps {
 export const CategoryBlogPage: React.FC<BlogCategoryPageProps> = ({
   posts,
 }) => {
+  const router = useRouter();
+  const locale = router?.locale;
+
   return (
     <>
       <h1 className={'text-3xl mb-8'}>
-        <a href='/blog/1'>All Posts</a> / <strong>{posts[0]?.category}</strong>
+        <AllPostsLink url={'/blog/1'} locale={locale}>
+          {posts[0]?.category}
+        </AllPostsLink>
       </h1>
       <div className={'grid grid-cols-1 gap-12 md:grid-cols-2 xl:grid-cols-3'}>
         {posts.map((post, i) => {
@@ -27,10 +34,15 @@ export const CategoryBlogPage: React.FC<BlogCategoryPageProps> = ({
 
 export default CategoryBlogPage;
 
-export function getStaticProps({
+export async function getStaticProps({
+  locale,
   params,
-}): GetStaticPropsResult<BlogCategoryPageProps> {
-  const posts = getBlogPostsByCategory(params.cat);
+}): Promise<GetStaticPropsResult<BlogCategoryPageProps>> {
+  const blogPostResolver = await new BlogPostResolver(
+    locale,
+  ).fetchPostContent();
+
+  const posts = blogPostResolver.getBlogPostsByCategory(params.cat);
 
   return {
     props: {
@@ -39,18 +51,18 @@ export function getStaticProps({
   };
 }
 
-export function getStaticPaths() {
-  const files = fs.readdirSync('./content/categories');
-  const paths = files.map((filename) => {
-    return {
-      params: {
-        cat: filename.replace('.md', ''),
-      },
-    };
-  });
+export async function getStaticPaths() {
+  const paths = await resolveLocalizedPaths('categories');
 
   return {
-    paths,
+    paths: paths.map((path) => {
+      return {
+        params: {
+          cat: path.params.slug,
+        },
+        locale: path.locale,
+      };
+    }),
     fallback: false,
   };
 }

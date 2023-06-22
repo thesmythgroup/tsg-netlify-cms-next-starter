@@ -3,13 +3,15 @@ import WidgetShowcaseComponent, {
   WidgetShowcaseComponentProps,
 } from '../components/page/WidgetShowcaseComponent';
 import CollectionService from '../lib/CollectionService';
+import { LocalizedMarkdownContentInterface } from '../interfaces/LocalizedMarkdownContent.interface';
 export const WidgetShowcasePage: React.FC<WidgetShowcaseComponentProps> = (
   props,
 ) => {
-  const { color, profile, appointmentTime, location, code } = props;
+  const { title, color, profile, appointmentTime, location, code } = props;
 
   return (
     <WidgetShowcaseComponent
+      title={title}
       code={code}
       color={color}
       appointmentTime={appointmentTime}
@@ -21,15 +23,16 @@ export const WidgetShowcasePage: React.FC<WidgetShowcaseComponentProps> = (
 
 export default WidgetShowcasePage;
 
-export function getStaticProps(): GetStaticPropsResult<WidgetShowcaseComponentProps> {
-  const markdownCollection =
-    new CollectionService<WidgetShowcaseComponentProps>(
-      './content/widgetShowcase.md',
-    );
+export function getStaticProps({
+  locale,
+}): GetStaticPropsResult<WidgetShowcaseComponentProps> {
+  const markdownCollection = new CollectionService<
+    LocalizedMarkdownContentInterface<WidgetShowcaseComponentProps>
+  >('./content/widgetShowcase.md');
 
   const resolvedFiles = markdownCollection.getParsedFiles();
 
-  const metadataFromFile = resolvedFiles[0];
+  const metadataFromFile = resolvedFiles[0][locale];
 
   return {
     props: {
@@ -38,6 +41,7 @@ export function getStaticProps(): GetStaticPropsResult<WidgetShowcaseComponentPr
       appointmentTime: metadataFromFile.appointmentTime ?? null,
       location: metadataFromFile.location,
       profile: metadataFromFile.profile,
+      title: metadataFromFile.title,
     },
   };
 }

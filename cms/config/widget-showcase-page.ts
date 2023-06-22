@@ -1,4 +1,5 @@
 import { CmsCollectionFile } from 'netlify-cms-core';
+import { LOCALES } from '../../lib/locale-settings';
 
 // This page serves to highlight the various widgets that are available as part of Netlify CMS.
 // Documentation can be found here: https://www.netlifycms.org/docs/widgets/
@@ -6,13 +7,24 @@ export const widgetShowcasePage: CmsCollectionFile = {
   label: 'Widget Showcase',
   name: 'widgetShowcasePage',
   file: 'content/widgetShowcase.md',
+  i18n: {
+    structure: 'single_file',
+    locales: LOCALES,
+  },
   fields: [
+    {
+      label: 'Title',
+      name: 'title',
+      widget: 'string',
+      i18n: true,
+    },
     {
       label: 'Header Color',
       name: 'color',
       widget: 'color',
       enableAlpha: true,
       allowInput: true,
+      i18n: true,
     },
     // The object widget allows you to group multiple widgets together, nested under a single
     // field. You can choose any widget as a child of an object widget–even other objects.
@@ -21,11 +33,13 @@ export const widgetShowcasePage: CmsCollectionFile = {
       name: 'profile',
       widget: 'object',
       summary: 'Profile: {{fields.name}}',
+      i18n: true,
       fields: [
         {
           label: 'Public',
           name: 'public',
           widget: 'boolean',
+          i18n: true,
           default: true,
         },
         {
@@ -33,6 +47,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
           name: 'name',
           widget: 'string',
           default: 'John Doe',
+          i18n: true,
         },
         {
           label: 'Profile Picture Picker',
@@ -40,6 +55,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
           required: false,
           widget: 'file',
           default: '/uploads/cleanshot-2022-05-24-at-17.13.20-2x.png',
+          i18n: true,
           media_library: {
             name: 'mediaLibraryName',
             config: {
@@ -56,6 +72,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
           min: 1,
           max: 101,
           step: 1,
+          i18n: true,
         },
         {
           label: 'Bio',
@@ -63,6 +80,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
           widget: 'text',
           default: 'I am a human.',
           pattern: ['.{5,}', 'Must have at least 5 characters'],
+          i18n: true,
         },
         {
           label: 'Roles',
@@ -74,25 +92,35 @@ export const widgetShowcasePage: CmsCollectionFile = {
           required: false,
           options: ['Design', 'UX', 'Dev', 'Marketing', 'Sales'],
           default: 'Design',
+          i18n: true,
         },
         {
           label: 'Address',
           name: 'address',
           widget: 'object',
           collapsed: true,
+          i18n: true,
           fields: [
             {
               label: 'Street Address',
               name: 'street',
               widget: 'string',
               required: false,
+              i18n: true,
             },
-            { label: 'City', name: 'city', widget: 'string', required: false },
+            {
+              label: 'City',
+              name: 'city',
+              widget: 'string',
+              required: false,
+              i18n: true,
+            },
             {
               label: 'Zip Code',
               name: 'zip-code',
               widget: 'string',
               required: false,
+              i18n: true,
             },
           ],
         },
@@ -101,6 +129,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
           name: 'airportCode',
           required: false,
           widget: 'select',
+          i18n: true,
           options: [
             { label: 'New York', value: 'JFK' },
             { label: 'London', value: 'LHR' },
@@ -122,6 +151,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
       name: 'location',
       widget: 'map',
       required: false,
+      i18n: true,
     },
     {
       label: 'Schedule Next Appointment',
@@ -132,6 +162,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
       time_format: 'HH:mm', // e.g. 21:07
       format: 'LLL',
       picker_utc: false,
+      i18n: true,
     },
     // Hidden
     { label: 'Layout', name: 'layout', widget: 'hidden', default: 'blog' },
@@ -139,6 +170,7 @@ export const widgetShowcasePage: CmsCollectionFile = {
       label: 'Code',
       name: 'code',
       widget: 'code',
+      i18n: true,
     },
 
     // Referencing a file collection list field example
@@ -148,9 +180,11 @@ export const widgetShowcasePage: CmsCollectionFile = {
       widget: 'relation',
       collection: 'pages',
       file: 'home',
+      i18n: true,
       search_fields: ['features.*.title'],
       value_field: 'features.*.title',
       display_fields: ['features.*.title'],
+      required: false,
     },
 
     // Referencing a folder collection field example
@@ -158,10 +192,12 @@ export const widgetShowcasePage: CmsCollectionFile = {
       label: 'Featured Location',
       name: 'featuredLocation',
       widget: 'relation',
+      i18n: true,
       collection: 'sales-offices',
       search_fields: ['address'],
       value_field: 'address',
       display_fields: ['{{title}} ({{address}})'],
+      required: false,
     },
   ],
 };

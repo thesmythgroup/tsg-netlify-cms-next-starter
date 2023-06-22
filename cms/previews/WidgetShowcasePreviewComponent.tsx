@@ -10,6 +10,7 @@ import WidgetShowcaseComponent from '../../components/page/WidgetShowcaseCompone
 const IndexPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
   props,
 ) => {
+  const title = props.entry.getIn(['data', 'title']);
   // The code widget has properties 'code' and 'lang' which you
   // can use with a tool like Prism to render syntax highlighting.
   const code = props.entry.getIn(['data', 'code'])?.toJS();
@@ -34,6 +35,7 @@ const IndexPreviewComponent: React.FC<PreviewTemplateComponentProps> = (
 
   return (
     <WidgetShowcaseComponent
+      title={title}
       code={code}
       color={color}
       appointmentTime={appointmentTime}

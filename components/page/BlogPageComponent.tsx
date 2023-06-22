@@ -1,4 +1,5 @@
 import BlogPostComponent from '../BlogPostComponent';
+import Link from 'next/link';
 
 export interface BlogPageComponentProps {
   title: string;
@@ -9,14 +10,14 @@ export interface BlogPageComponentProps {
 
 export interface BlogPost {
   category: string;
-  title: string;
-  tags?: string[];
+  title: string | null;
+  tags: string[];
   date: string;
   image: string;
   content: string;
-  slug?: string;
-  categorySlug?: string;
-  tagSlugs?: string[];
+  slug: string;
+  categorySlug: string;
+  tagSlugs: string[];
 }
 
 export interface Pagination {
@@ -40,21 +41,19 @@ const BlogPageComponent: React.FC<BlogPageComponentProps> = ({
         })}
       </div>
       <div className={'flex justify-center mt-20'}>
-        <a
-          href={`/blog/${pagination.current - 1}`}
+        <Link
+          href={`${pagination.current - 1}`}
           className={`mr-4 ${pagination.current === 1 && 'invisible'}`}
         >
-          {'<'}
-        </a>
+          &larr;
+        </Link>
         {`${pagination.current} of ${pagination.total}`}
-        <a
-          href={`/blog/${pagination.current + 1}`}
-          className={`ml-4 ${
-            pagination.current === pagination.total && 'invisible'
-          }`}
+        <Link
+          href={`${pagination.current + 1}`}
+          className={`mr-4 ${pagination.current === 1 && 'invisible'}`}
         >
-          {'>'}
-        </a>
+          &rarr;
+        </Link>
       </div>
     </div>
   );

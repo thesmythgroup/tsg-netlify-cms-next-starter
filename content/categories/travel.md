@@ -1,3 +1,6 @@
 ---
-name: Travel
+en:
+  name: Travel
+es:
+  name: Viajar
 ---

@@ -1,3 +1,6 @@
 ---
-name: Good Eats
+en:
+  name: Good Eats
+es:
+  name: Buena comida
 ---

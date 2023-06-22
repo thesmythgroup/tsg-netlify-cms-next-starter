@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import Link from 'next/link';
+import LanguagePicker from '../LanguagePicker';
 
 const HeaderComponent: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
@@ -20,25 +22,26 @@ const HeaderComponent: React.FC = () => {
           src={'/assets/images/tsg_icon_large.png'}
           alt={'The Smyth Group logo'}
         />
-        <a href='/' className={'px-8 text-3xl font-bold'}>
-          The Smyth Group
-        </a>
+        <Link href='/'>
+          <a className={'px-8 text-3xl font-bold'}>The Smyth Group</a>
+        </Link>
       </div>
 
       {/* Desktop Menu */}
       <div className='hidden md:block font-bold'>
-        <a href='/blog/1' className='px-3'>
-          Blog
-        </a>
-        <a href='/about' className='px-3'>
-          About
-        </a>
-        <a href='/contact' className='px-3'>
-          Contact
-        </a>
-        <a href='/widgets' className='px-3'>
-          Widgets
-        </a>
+        <Link href='/blog/1'>
+          <a className='px-3'>Blog</a>
+        </Link>
+        <Link href='/about' className='px-3'>
+          <a className='px-3'>About</a>
+        </Link>
+        <Link href='/contact' className='px-3'>
+          <a className='px-3'>Contact</a>
+        </Link>
+        <Link href='/widgets' className='px-3'>
+          <a className='px-3'>Widgets</a>
+        </Link>
+        <LanguagePicker />
       </div>
 
       {/* Mobile Menu Open/Close Button **/}
@@ -75,21 +78,29 @@ const HeaderComponent: React.FC = () => {
           >
             Close
           </div>
-          <a href='/' className={'px-12 py-5 text-black'} key='Home'>
-            Home
-          </a>
-          <a href='/blog/1' className={'px-12 py-5 text-black'} key='Blog'>
-            Blog
-          </a>
-          <a href='/about' className={'px-12 py-5 text-black'} key='About'>
-            About
-          </a>
-          <a href='/contact' className={'px-12 py-5 text-black'} key='Contact'>
-            Contact
-          </a>
-          <a href='/widgets' className={'px-12 py-5 text-black'} key='Widgets'>
-            Widgets
-          </a>
+          <Link href='/' key='Home'>
+            <a className={'px-12 py-5 text-black'}>Home</a>
+          </Link>
+          <Link href='/blog/1' className={'px-12 py-5 text-black'} key='Blog'>
+            <a className={'px-12 py-5 text-black'}>Blog</a>
+          </Link>
+          <Link href='/about' className={'px-12 py-5 text-black'} key='About'>
+            <a className={'px-12 py-5 text-black'}>About</a>
+          </Link>
+          <Link
+            href='/contact'
+            className={'px-12 py-5 text-black'}
+            key='Contact'
+          >
+            <a className={'px-12 py-5 text-black'}>Contact</a>
+          </Link>
+          <Link
+            href='/widgets'
+            className={'px-12 py-5 text-black'}
+            key='Widgets'
+          >
+            <a className={'px-12 py-5 text-black'}>Widgets</a>
+          </Link>
         </div>
       </div>
     </div>

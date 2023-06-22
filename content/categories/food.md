@@ -1,3 +1,6 @@
 ---
-name: Food
+en:
+  name: Food
+es:
+  name: Comida
 ---
