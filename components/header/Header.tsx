@@ -37,12 +37,14 @@ const HeaderComponent: React.FC = () => {
     <div className='py-8 flex flex-row justify-between items-center'>
       <div className={'flex flex-row justify items-center'}>
         <img
-          className={'inline-block w-24 rounded-full border border-gray-light'}
-          src={'/assets/images/tsg_icon_large.png'}
+          className={'inline-block w-24'}
+          src={'/assets/images/tsg-logo-color.png'}
           alt={'The Smyth Group logo'}
         />
         <Link href='/'>
-          <a className={'px-8 text-3xl font-bold'}>The Smyth Group</a>
+          <a className={'px-8 text-xl md:text-3xl font-bold'}>
+            The Smyth Group
+          </a>
         </Link>
       </div>
 
@@ -78,7 +80,7 @@ const HeaderComponent: React.FC = () => {
 
       {/* Mobile Menu Open/Close Button **/}
       <div
-        className='md:hidden cursor-pointer font-bold'
+        className='md:hidden text-sm cursor-pointer font-bold'
         onClick={() => setOpen()}
       >
         Menu
