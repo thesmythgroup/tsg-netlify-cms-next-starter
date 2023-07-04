@@ -143,7 +143,7 @@ export default function LanguagePicker() {
         <ul
           className={`${
             isOpen ? 'flex' : 'hidden'
-          } absolute top-full z-10 mt-1 flex w-72 list-none flex-col rounded bg-gray-200 py-2 shadow-md shadow-slate-500/10 `}
+          } absolute top-full z-10 mt-1 flex min-w-[100px] list-none flex-col rounded bg-gray-200 py-2 shadow-md shadow-slate-500/10 `}
         >
           {navigationItems.map((item, index) => {
             return (
