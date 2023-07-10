@@ -1,8 +1,12 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import LanguagePicker from '../LanguagePicker';
+import { useRouter } from 'next/router';
+import { i18nString } from '../../lib/i18n';
 
 const HeaderComponent: React.FC = () => {
+  const router = useRouter();
+  const locale = router?.locale;
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   const setOpen = () => {
@@ -11,19 +15,19 @@ const HeaderComponent: React.FC = () => {
 
   const menuItems: { linkName: string; href: string }[] = [
     {
-      linkName: 'Blog',
+      linkName: i18nString(locale, 'navItemBlog'),
       href: '/blog/1',
     },
     {
-      linkName: 'About',
+      linkName: i18nString(locale, 'navItemAbout'),
       href: '/about',
     },
     {
-      linkName: 'Contact',
+      linkName: i18nString(locale, 'navItemContact'),
       href: '/contact',
     },
     {
-      linkName: 'Widgets',
+      linkName: i18nString(locale, 'navItemWidgets'),
       href: '/widgets',
     },
   ];
