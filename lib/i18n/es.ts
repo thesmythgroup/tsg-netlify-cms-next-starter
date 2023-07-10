@@ -11,6 +11,10 @@ const strings: I18nString = {
   widgetLabelNearestAirport: 'Aeropuerto más cercano',
   widgetLabelAppointmentDate: 'Tu cita es el',
   widgetLinkAViewPickupLocation: 'Ver ubicación de recogida',
+  navItemAbout: 'Sobre',
+  navItemBlog: 'Blog',
+  navItemContact: 'Contacto',
+  navItemWidgets: 'Widgets',
 };
 
 export default strings;
