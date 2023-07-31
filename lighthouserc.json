@@ -1,0 +1,26 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npm run start",
+      "startServerReadyPattern": "ready - started",
+      "url": [
+        "http://localhost:3000",
+        "http://localhost:3000/about/",
+        "http://localhost:3000/contact/",
+        "http://localhost:3000/blog/1/",
+        "http://localhost:3000/blog/posts/2023-06-14-great-eats-in-nantucket-via-chatgpt/"
+      ],
+      "numberOfRuns": 1,
+      "settings": {
+        "preset": "desktop"
+      }
+    },
+    "assert": {
+      "preset": "lighthouse:no-pwa"
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    },
+    "server": {}
+  }
+}
