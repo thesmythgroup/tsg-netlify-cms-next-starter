@@ -1,0 +1,36 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "npm run start",
+      "startServerReadyPattern": "ready - started",
+      "url": [
+        "http://localhost:3000/",
+        "http://localhost:3000/about",
+        "http://localhost:3000/blog/posts/2023-06-14-great-eats-in-nantucket-via-chatgpt",
+        "http://localhost:3000/blog/posts/2023-06-15-what-is-a-computer",
+        "http://localhost:3000/contact",
+        "http://localhost:3000/es/",
+        "http://localhost:3000/es/about",
+        "http://localhost:3000/es/blog/posts/2023-06-14-great-eats-in-nantucket-via-chatgpt",
+        "http://localhost:3000/es/blog/posts/2023-06-15-what-is-a-computer",
+        "http://localhost:3000/es/contact",
+        "http://localhost:3000/es/widgets",
+        "http://localhost:3000/widgets"
+      ],
+      "numberOfRuns": 1,
+      "settings": {
+        "preset": "desktop",
+        "onlyCategories": [
+          "performance",
+          "accessibility",
+          "best-practices",
+          "seo"
+        ]
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    },
+    "server": {}
+  }
+}
